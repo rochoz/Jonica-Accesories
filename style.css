@@ -373,6 +373,12 @@ header img {
     color: #111;
 }
 
+.sin-stock a{
+    background-color: gray;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
 
 .productos-card img {
     height: 140px;
