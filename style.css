@@ -26,7 +26,7 @@ header {
     background-color: #f8f8f8;
     position: sticky;
     top: 0;
-   z-index: 100; /*  AGREGAR AL GITHUB */
+   z-index: 100;
 }
 header img {
     width: 100px;
@@ -383,6 +383,30 @@ header img {
 
 .productos-card:hover img {
     transform: scale(1.13);
+}
+
+.badge{
+    display: none;
+}
+
+.sin-stock .badge{
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: crimson;
+    color:white;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.sin-stock{
+    opacity: 0.6;
+}
+
+.sin-stock img{
+    filter: grayscale(100%);
 }
 
 .categoria {

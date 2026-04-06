@@ -150,6 +150,7 @@ header img {
 }
 
 .productos-card {
+    position: relative;
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
@@ -225,6 +226,30 @@ header img {
     transform: scale(1.13);
 }
 
+
+.badge{
+    display: none;
+}
+
+.sin-stock .badge{
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: crimson;
+    color:white;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.sin-stock{
+    opacity: 0.6;
+}
+
+.sin-stock img{
+    filter: grayscale(100%);
+}
 
 
 #contacto {
