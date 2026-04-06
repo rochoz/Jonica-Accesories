@@ -457,20 +457,7 @@ header img {
     gap: 10px;
 }
 
-.botones a {
-    color: #111;
-    font-size: 21px;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    transition: 0.3s;
-    margin-bottom: 20px;
-}
 
-.botones a:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
-    color: #c9a96e;
-}
 
 footer {
     background: #111;

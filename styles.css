@@ -221,3 +221,144 @@ header img {
 .productos-card:hover img {
     transform: scale(1.13);
 }
+
+
+
+#contacto {
+    width: 70%;
+    margin: 0 auto;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+#contacto h2 {
+    font-size: 34px;
+    text-align: center;
+    padding: 10px;
+}
+
+
+#contacto p {
+    text-align: center;
+    font-size: 20px;
+    color: #333;
+
+}
+
+.botones-contacto {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.social-btn i {
+    color: #333;
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 100%;
+    transition: all 350ms;
+}
+
+.social-btn:hover i {
+    color: white;
+    background-color: #c9a96e;
+
+
+}
+
+
+footer {
+    background: #111;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+#footer-marca p {
+    font-size: 19px;
+    margin-top: -10px;
+}
+
+#footer-navbar ul {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#footer-navbar ul a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 21px;
+}
+
+#footer-navbar ul a:visited {
+    color: white;
+}
+
+#footer-navbar ul a:hover {
+    color: #c9a96e;
+    text-decoration: underline;
+}
+
+.footer-info p {
+    text-align: left;
+}
+
+.botones-footer a {
+    color: white;
+    font-size: 20px;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    transition: 0.3s;
+    margin: 5px;
+    margin-bottom: 20px;
+}
+
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    font-size: 14px;
+    color: #888;
+}
+
+
+
+
+.botones-footer a:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+    color: #c9a96e;
+}
+
+
+@media (max-width: 700px) {
+    #footer-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 20px;
+    }
+
+    #footer-navbar ul {
+        gap: 10px;
+        padding: 0;
+    }
+
+
+}
