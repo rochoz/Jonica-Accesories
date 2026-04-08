@@ -237,8 +237,34 @@ header img {
 }
 
 
-.badge{
-    display: none;
+
+
+.badge,
+.badge2{
+   display: none;
+}
+
+.oferta .badge2{
+     display: block;
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    background: green;
+    color:white;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.oferta .precio{
+    color: green;
+    font-weight: bold;
+}
+
+.oferta .precio-viejo{
+    text-decoration: line-through;
+    color: gray;
+    margin-right:5px ;
 }
 
 .sin-stock .badge{
