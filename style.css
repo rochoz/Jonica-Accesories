@@ -206,6 +206,21 @@ header img {
     margin-bottom: 10px;
 }
 
+.hero-text{
+    animation: fadeUp 1s ease;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero h1 {
     font-size: 42px;
     margin-bottom: 20px;
