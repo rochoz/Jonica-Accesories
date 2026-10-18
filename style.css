@@ -113,14 +113,17 @@ header img {
         overflow: hidden;
         opacity: 0;
         pointer-events: none;
-        transition: max-height 0.3s ease, opacity 0.2s ease;
+        visibility: hidden;
+        transition: max-height 0.3s ease, opacity 0.2s ease, visibility 0s linear 0.3s;
     }
 
     #navbar ul.is-open {
         max-height: 300px;
         opacity: 1;
         pointer-events: auto;
+        visibility: visible;
         padding: 10px 0;
+        transition: max-height 0.3s ease, opacity 0.2s ease, visibility 0s;
     }
 
     #navbar ul li {
@@ -456,6 +459,10 @@ header img {
    box-shadow:0 10px 20px rgba(0, 0, 0, 0.15);
 
 
+}
+
+.producto-info p {
+    overflow-wrap: break-word;
 }
 
 .producto-info p:first-child{
