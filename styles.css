@@ -212,7 +212,7 @@ header img {
 #collares,
 #pulseras,
 #aritos{
-    scroll-margin-top: 110px;
+    scroll-margin-top: 160px;
 }
 
 #contacto{
@@ -566,4 +566,40 @@ footer {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+}
+
+/* Fase 2 (adapt): areas tactiles >=44px sin cambio visual */
+.categorias-nav a::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    right: 0;
+    bottom: -14px;
+    left: 0;
+}
+
+.menu-toggle {
+    position: relative;
+}
+
+.menu-toggle::after {
+    content: "";
+    position: absolute;
+    top: -12px;
+    right: -8px;
+    bottom: -12px;
+    left: -8px;
+}
+
+.productos-card a {
+    position: relative;
+}
+
+.productos-card a::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    bottom: -6px;
+    left: -8px;
 }
