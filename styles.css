@@ -103,21 +103,21 @@ header img {
         background-color: #f8f8f8;
         box-shadow: 0 8px 12px rgba(0, 0, 0, 0.08);
 
-        max-height: 0;
-        overflow: hidden;
+        /* Fase 3 (optimize): sin animación de layout (max-height) */
         opacity: 0;
         pointer-events: none;
         visibility: hidden;
-        transition: max-height 0.3s ease, opacity 0.2s ease, visibility 0s linear 0.3s;
+        transform: translateY(-8px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
     }
 
     #navbar ul.is-open {
-        max-height: 300px;
         opacity: 1;
         pointer-events: auto;
         visibility: visible;
         padding: 10px 0;
-        transition: max-height 0.3s ease, opacity 0.2s ease, visibility 0s;
+        transform: translateY(0);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
     }
 
     #navbar ul li {
@@ -217,6 +217,25 @@ header img {
 
 #contacto{
     scroll-margin-top: 160px;
+}
+
+/* Fase 3 (optimize): renderizar solo las secciones cercanas al viewport */
+.categoria {
+    content-visibility: auto;
+}
+
+#anillos,
+#aritos {
+    contain-intrinsic-size: auto 2720px;
+}
+
+#collares,
+#pulseras {
+    contain-intrinsic-size: auto 2070px;
+}
+
+.categoria:not([id]) {
+    contain-intrinsic-size: auto 770px;
 }
 
 .categoria h2 {
