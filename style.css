@@ -343,6 +343,21 @@ header img {
     animation: fadeUp 1s ease;
 }
 
+/* Reglas base de tipografía del hero. IMPORTANTE: van ANTES de los media
+   queries de abajo. Antes estaban después y, al tener la misma
+   especificidad que `.hero h1` dentro del media query, ganaban por orden
+   en móvil (una regla posterior sin media query pisa a una anterior con
+   media query). Por eso el título seguía a 42px en el celular. */
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 19px;
+    margin-bottom: 30px;
+}
+
 @media (max-width: 768px) {
     .hero {
         /* min-height en vez de height fija: si el contenido crece, el hero
@@ -416,17 +431,6 @@ header img {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.hero h1 {
-    font-size: 42px;
-    margin-bottom: 20px;
-
-}
-
-.hero p {
-    font-size: 19px;
-    margin-bottom: 30px;
 }
 
 .btn {
