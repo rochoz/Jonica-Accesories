@@ -181,11 +181,6 @@ header img {
     z-index: 1;
 }
 
-.hero:hover .slide,
-.hero:hover .slider-puntos span {
-    animation-play-state: paused;
-}
-
 .slide {
     position: absolute;
     width: 100%;
@@ -194,42 +189,84 @@ header img {
     background-position: center;
 
     opacity: 0;
+    /* Antes eran 3 animaciones CSS desfasadas y no clicables.
+       Ahora el JS pone/quita .is-activo y aquí solo se hace la transición. */
+    transition: opacity 1000ms ease;
+}
+
+/* Estado visible del slide: lo controla el JS. */
+.slide.is-activo {
+    opacity: 1;
 }
 
 .slide1 {
     background-image: url('media/hero.jpeg');
-    animation: fade 15s infinite;
 }
 
 .slide2 {
     background-image: url(media/hero1.jpeg);
-    animation: fade 15s infinite 5s;
 }
 
 .slide3 {
     background-image: url(media/hero3.jpeg);
-    animation: fade 15s infinite 10s;
 }
 
-@keyframes fade {
-    0% {
-        opacity: 0;
-    }
+/* ------------------------------------------------------------------ *
+ * Controles del slide (flechas + puntos)
+ * ------------------------------------------------------------------ */
 
-    10% {
+.slider-flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Área táctil >= 48px */
+    width: 48px;
+    height: 48px;
+
+    background: rgba(17, 17, 17, 0.35);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+
+    /* Aparecen al pasar el mouse, sin ensuciar el hero en reposo. */
+    opacity: 0;
+    transition: opacity 300ms ease, background-color 300ms ease;
+}
+
+.slider-prev {
+    left: 16px;
+}
+
+.slider-next {
+    right: 16px;
+}
+
+/* Se muestran al hover/focus sobre el hero, o cuando el control tiene foco. */
+.hero:hover .slider-flecha,
+.slider-flecha:focus-visible {
+    opacity: 1;
+}
+
+.slider-flecha:hover,
+.slider-flecha:focus-visible {
+    background: #d6a956;
+    color: #111;
+    outline: none;
+}
+
+/* En pantallas táctiles no hay hover: las flechas quedan siempre visibles. */
+@media (hover: none) {
+    .slider-flecha {
         opacity: 1;
-    }
-
-    30% {
-        opacity: 1;
-    }
-
-    40% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
     }
 }
 
@@ -243,56 +280,43 @@ header img {
     z-index: 2;
 }
 
-.slider-puntos span {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    transition: 0.3s;
+/* El botón tiene área táctil de 48px; el punto visible es el ::after. */
+.slider-punto {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.slider-puntos span {
+.slider-punto::after {
+    content: "";
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.5);
+    transition: background-color 300ms ease, transform 300ms ease;
 }
 
-
-
-.slider-puntos span:nth-child(1) {
-    animation: dot 15s infinite;
+.slider-punto:hover::after,
+.slider-punto:focus-visible::after {
+    background: #d6a956;
+    transform: scale(1.2);
 }
 
-.slider-puntos span:nth-child(2) {
-    animation: dot 15s infinite 5s;
+.slider-punto:focus-visible {
+    outline: none;
 }
 
-.slider-puntos span:nth-child(3) {
-    animation: dot 15s infinite 10s;
-}
-
-
-@keyframes dot {
-    0% {
-        background: rgba(255, 255, 255, 0.5);
-    }
-
-    10% {
-        background: white;
-    }
-
-    30% {
-        background: white;
-    }
-
-    40% {
-        background: rgba(255, 255, 255, 0.5);
-    }
-
-    100% {
-        background: rgba(255, 255, 255, 0.5);
-    }
+/* Punto del slide activo. */
+.slider-punto.is-activo::after {
+    background: #fff;
+    transform: scale(1.2);
 }
 
 .hero-text {
@@ -899,6 +923,16 @@ header.header-compacto {
 
     .js-anim .autoShow {
         animation: none;
+    }
+
+    /* El slider sigue funcionando, pero sin fundido: cambio instantáneo. */
+    .slide {
+        transition: none;
+    }
+
+    .slider-flecha,
+    .slider-punto::after {
+        transition: none;
     }
 }
 

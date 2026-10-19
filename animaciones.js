@@ -180,10 +180,128 @@
     }
 
     /* ------------------------------------------------------------------ *
+     * 3. Slider del hero (clicable)
+     *
+     * El hero usaba 3 animaciones CSS desfasadas: se veía como un slide
+     * pero no se podía controlar. Ahora el avance automático lo lleva el JS
+     * y el usuario puede moverlo con flechas, puntos y teclado.
+     * ------------------------------------------------------------------ */
+
+    function iniciarSlider() {
+        var hero = document.getElementById('hero-slider');
+        if (!hero) return;
+
+        var slides = Array.prototype.slice.call(hero.querySelectorAll('.slide'));
+        var puntos = Array.prototype.slice.call(hero.querySelectorAll('.slider-punto'));
+        var prev = hero.querySelector('.slider-prev');
+        var next = hero.querySelector('.slider-next');
+
+        if (slides.length < 2) return;
+
+        var actual = 0;
+        var INTERVALO = 5000;      // ritmo del avance automático
+        var PAUSA_TRAS_USO = 8000; // cuánto se detiene al interactuar el usuario
+        var temporizador = null;
+        var reanudarEn = null;
+
+        function mostrar(indice) {
+            // Índice circular: permite ir hacia atrás desde el primero.
+            actual = (indice + slides.length) % slides.length;
+
+            slides.forEach(function (slide, i) {
+                slide.classList.toggle('is-activo', i === actual);
+            });
+
+            puntos.forEach(function (punto, i) {
+                punto.classList.toggle('is-activo', i === actual);
+            });
+        }
+
+        function siguiente() {
+            mostrar(actual + 1);
+        }
+
+        function anterior() {
+            mostrar(actual - 1);
+        }
+
+        function detenerAuto() {
+            if (temporizador) {
+                window.clearInterval(temporizador);
+                temporizador = null;
+            }
+        }
+
+        function arrancarAuto() {
+            detenerAuto();
+            temporizador = window.setInterval(siguiente, INTERVALO);
+        }
+
+        // Al interactuar: avanzamos ya y pausamos un rato antes de retomar.
+        function usarYPausar(accion) {
+            accion();
+            detenerAuto();
+            if (reanudarEn) window.clearTimeout(reanudarEn);
+            reanudarEn = window.setTimeout(function () {
+                arrancarAuto();
+            }, PAUSA_TRAS_USO);
+        }
+
+        if (next) {
+            next.addEventListener('click', function () {
+                usarYPausar(siguiente);
+            });
+        }
+
+        if (prev) {
+            prev.addEventListener('click', function () {
+                usarYPausar(anterior);
+            });
+        }
+
+        puntos.forEach(function (punto, i) {
+            punto.addEventListener('click', function () {
+                usarYPausar(function () {
+                    mostrar(i);
+                });
+            });
+        });
+
+        // Flechas del teclado: escuchamos en el hero (cubre cuando el foco
+        // está en cualquiera de sus controles, ya que el evento burbujea).
+        hero.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                usarYPausar(siguiente);
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                usarYPausar(anterior);
+            }
+        });
+
+        // Pausa mientras la pestaña no está visible: no gastamos recursos
+        // y evitamos que el slide salte al volver.
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) {
+                detenerAuto();
+            } else if (!reanudarEn) {
+                arrancarAuto();
+            }
+        });
+
+        mostrar(0);
+        arrancarAuto();
+    }
+
+    /* ------------------------------------------------------------------ *
      * Arranque
      * ------------------------------------------------------------------ */
 
     function iniciar() {
+        // El slider del hero es navegación, no decoración: se activa siempre,
+        // también con "menos movimiento" (ahí el CSS evita la transición).
+        iniciarSlider();
+
         // Con "menos movimiento" activado: nada se anima. El contenido se ve
         // por defecto porque nunca se aplicó js-anim ni las clases que ocultan.
         if (sinMovimiento()) {

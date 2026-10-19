@@ -35,16 +35,23 @@
             </ul>
         </nav>
     </header>
-    <section class="hero">
+    <section class="hero" id="hero-slider" tabindex="-1">
 
-        <div class="slide slide1"></div>
+        <div class="slide slide1 is-activo"></div>
         <div class="slide slide2"></div>
         <div class="slide slide3"></div>
 
+        <button type="button" class="slider-flecha slider-prev" aria-label="Imagen anterior">
+            <span aria-hidden="true">&#8249;</span>
+        </button>
+        <button type="button" class="slider-flecha slider-next" aria-label="Imagen siguiente">
+            <span aria-hidden="true">&#8250;</span>
+        </button>
+
         <div class="slider-puntos">
-            <span></span>
-            <span></span>
-            <span></span>
+            <button type="button" class="slider-punto is-activo" aria-label="Ver imagen 1 de 3"></button>
+            <button type="button" class="slider-punto" aria-label="Ver imagen 2 de 3"></button>
+            <button type="button" class="slider-punto" aria-label="Ver imagen 3 de 3"></button>
         </div>
 
 
