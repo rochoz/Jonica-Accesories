@@ -409,7 +409,8 @@ header img {
 #categorias h3 {
     font-size: 28px;
     text-align: center;
-    padding: 50px;
+    /* Fase 4 (layout): mas aire arriba (separa secciones) y menos abajo (agrupa con su grilla) */
+    padding: 64px 20px 18px;
 
 
 }
@@ -421,7 +422,7 @@ header img {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 35px;
-    align-items: center;
+    /* Fase 4 (layout): filas alineadas (antes align-items:center descentraba las tarjetas) */
     margin-bottom: 50px;
 }
 
@@ -451,6 +452,10 @@ header img {
     max-height: 400px;
     padding: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    /* Fase 4 (layout): tarjeta en columna para alinear el CTA al pie de la fila */
+    display: flex;
+    flex-direction: column;
 }
 
 .productos-card:hover {
@@ -458,6 +463,11 @@ header img {
    box-shadow:0 10px 20px rgba(0, 0, 0, 0.15);
 
 
+}
+
+/* Fase 4 (layout): el bloque de datos absorbe el alto sobrante y el CTA queda al pie */
+.producto-info {
+    flex: 1 1 auto;
 }
 
 .producto-info p {
@@ -475,6 +485,7 @@ header img {
 
 .productos-card a {
     display: inline-block;
+    align-self: center;
     margin-top: 10px;
     padding: 8px 15px;
     background: black;
@@ -517,11 +528,13 @@ header img {
 
 
 .productos-card img {
-    height: 140px;
+    height: 200px;
     width: 100%;
     object-fit: cover;
     display: block;
     transition: all 420ms;
+    flex: 0 0 auto;
+    aspect-ratio: 1 / 1;
 }
 
 .productos-card:hover img {
@@ -580,7 +593,6 @@ header img {
 
 .categoria {
     text-align: center;
-    min-height: 1000px;
 
     /* Fase 3 (optimize): renderizar solo las secciones cercanas al viewport */
     content-visibility: auto;
@@ -588,7 +600,7 @@ header img {
 }
 
 .categoria:not([id]) {
-    contain-intrinsic-size: auto 1000px;
+    contain-intrinsic-size: auto 770px;
 }
 
 .btn-ver-mas {
