@@ -649,6 +649,55 @@ footer {
     }
 }
 
+/* ------------------------------------------------------------------ *
+ * Animaciones JS (animaciones.js)
+ *
+ * Cuando JS está activo, html recibe .js-anim y el JS se encarga de las
+ * apariciones. Aquí neutralizamos la animación CSS previa (animation-timeline
+ * no funciona en Safari ni Firefox) para que no compitan las dos.
+ * Si JS no carga, nada de esto aplica y el sitio sigue viéndose como antes.
+ * ------------------------------------------------------------------ */
+
+.js-anim .autoShow {
+    animation: none;
+}
+
+/* Estado inicial: invisible y ligeramente desplazado.
+   Se aplica solo si JS confirmó que va a animar (clase .js-anim en html). */
+.js-anim .anim-prep {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 620ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.js-anim .anim-prep.anim-visible {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+}
+
+/* Header compacto: aparece solo cuando JS lo pide tras scrollear. */
+header.header-compacto {
+    box-shadow: 0 4px 14px rgba(17, 17, 17, 0.08);
+    transition: box-shadow 300ms ease;
+}
+
+/* Con "menos movimiento" activado, jamás ocultamos contenido. */
+@media (prefers-reduced-motion: reduce) {
+    .js-anim .anim-prep {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .js-anim .autoShow {
+        animation: none;
+    }
+}
+
 /* Fase 2 (adapt): areas tactiles >=44px sin cambio visual */
 .categorias-nav a::before {
     content: "";
