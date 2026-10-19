@@ -347,10 +347,10 @@ header img {
     .hero {
         /* min-height en vez de height fija: si el contenido crece, el hero
            crece con él, así el CTA no puede superponerse con los puntos.
-           Bajó de 520px a 400px: antes el hero se comía toda la pantalla y
-           "Categorías" quedaba fuera del primer scroll. */
+           Ajustado a 450px: un punto medio entre los 520px originales (que
+           se comían la pantalla) y los 400px (demasiado ajustados). */
         height: auto;
-        min-height: 400px;
+        min-height: 450px;
         /* OJO: nada de padding en el hero. Los .slide son absolutos con
            height:100%, que se resuelve contra el content box: un padding
            inferior dejaría una franja sin imagen (se veía gris). */
@@ -393,8 +393,8 @@ header img {
 @media (max-width: 480px) {
     .hero {
         height: auto;
-        /* Bajó de 480px a 400px para mostrar "Categorías" antes del pliegue. */
-        min-height: 400px;
+        /* Alineado con el breakpoint de 768px: 450px. */
+        min-height: 450px;
     }
 }
 @keyframes fadeUp {
