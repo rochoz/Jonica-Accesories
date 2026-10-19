@@ -303,7 +303,8 @@ header img {
     overflow: hidden;
     text-align: left;
     transition: all 300ms;
-    padding: 16px 16px 12px;
+    /* Foto a sangre: el padding va al contenido de texto, no a la card. */
+    padding: 0;
     border: 1px solid rgba(17, 17, 17, 0.08);
     box-shadow: 0 6px 18px rgba(17, 17, 17, 0.08);
 
@@ -323,6 +324,8 @@ header img {
 /* Fase 4 (layout): el bloque de datos absorbe el alto sobrante y el CTA queda al pie */
 .producto-info {
     flex: 1 1 auto;
+    /* La foto va a sangre, así que el texto lleva su propio padding. */
+    padding: 14px 14px 0;
 }
 
 .producto-info p {
@@ -354,6 +357,10 @@ header img {
     transition: all 300ms;
     /* Rediseño: con la tarjeta alineada a la izquierda, el CTA acompaña el texto */
     align-self: flex-start;
+    /* La foto va a sangre, así que el CTA lleva su propio margen. */
+    margin-left: 14px;
+    margin-right: 14px;
+    margin-bottom: 14px;
 
     background: transparent;
     border: 1px solid #111;
@@ -364,6 +371,9 @@ header img {
     .productos-card a {
         margin-top: 0px;
         min-height: 48px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
     }
 }
 
@@ -397,12 +407,13 @@ header img {
     object-fit: cover;
     object-position: center 20%;
     display: block;
-    transition: all 420ms;
+    transition: transform 420ms ease;
     flex: 0 0 auto;
     aspect-ratio: 4 / 5;
-    /* Rediseño: radio propio (sin wrapper) + recorte del zoom en la propia imagen */
-    border-radius: 8px;
-    margin-bottom: 10px;
+    /* Foto a sangre: pega a los bordes de la card. El radio lo aporta la
+       card con overflow:hidden, así se ve como una sola pieza. */
+    border-radius: 0;
+    margin-bottom: 0;
 }
 
 .productos-card:hover img {
