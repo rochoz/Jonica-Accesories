@@ -381,15 +381,16 @@ header img {
     }
 
     .hero h1 {
-        /* Bajado de 28px a 26px: el título ocupa menos alto en móvil sin
-           perder presencia. */
-        font-size: 26px;
+        /* Subido de 26px a 27px: 27 es el máximo que mantiene el corte
+           correcto a 320px (a 28px "Joyas que resaltan" no entra en el
+           ancho disponible y el navegador rompe como "Joyas que"). */
+        font-size: 27px;
         line-height: 1.15;
         /* Corte de línea controlado: "Joyas que resaltan" / "tu estilo".
-           "Joyas que resaltan" mide ~248px a 26px, así que cualquier
-           max-width entre 248 y 281 produce ese corte. 262px es el centro
-           del rango, con margen a ambos lados. */
-        max-width: 262px;
+           A 27px "Joyas que resaltan" mide ~257px y "Joyas que resaltan tu"
+           ~293px, así que el max-width debe quedar entre 258 y 292.
+           280px está holgado dentro del rango y verificado en 320-768px. */
+        max-width: 280px;
         margin-left: auto;
         margin-right: auto;
     }
