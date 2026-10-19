@@ -366,7 +366,9 @@ header img {
     }
 
     .hero h1 {
-        font-size: 28px;
+        /* Bajado de 28px a 26px: el título ocupa menos alto en móvil sin
+           perder presencia. A 320-390px sigue en 2 líneas. */
+        font-size: 26px;
         line-height: 1.15;
     }
 
