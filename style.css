@@ -43,24 +43,33 @@ header img {
     color: black;
     text-decoration: none;
     font-size: 21px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 12px;
 }
 
 #navbar ul a:visited {
     color: black;
 }
 
-#navbar ul a:hover {
+#navbar ul a:hover,
+#navbar ul a:focus-visible {
     color: goldenrod;
     text-decoration: underline;
+    outline: none;
 }
 
 /* Botón hamburguesa (oculto en desktop) */
 .menu-toggle {
     display: none;
     flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 48px;
+    height: 44px;
     background: none;
     border: none;
     padding: 0;
@@ -71,15 +80,15 @@ header img {
 
 .menu-toggle span {
     display: block;
-    width: 100%;
-    height: 3px;
+    width: 24px;
+    height: 2px;
     background-color: #111;
     border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.2s ease;
 }
 
 .menu-toggle[aria-expanded="true"] span:first-child {
-    transform: translateY(8.5px) rotate(45deg);
+    transform: translateY(7px) rotate(45deg);
 }
 
 .menu-toggle[aria-expanded="true"] span:nth-child(2) {
@@ -87,12 +96,16 @@ header img {
 }
 
 .menu-toggle[aria-expanded="true"] span:last-child {
-    transform: translateY(-8.5px) rotate(-45deg);
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
+        min-height: 48px;
+        min-width: 48px;
+        align-items: center;
+        justify-content: center;
     }
 
     #navbar ul {
@@ -131,8 +144,12 @@ header img {
     }
 
     #navbar ul a {
-        display: block;
+        display: flex;
         padding: 14px 20px;
+        min-height: 48px;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
     }
 }
 
@@ -341,14 +358,21 @@ header img {
     background: black;
     color: white;
     padding: 12px 25px;
+    min-height: 48px;
+    min-width: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     border-radius: 5px;
     font-weight: 500;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus-visible {
     background: #333;
     transition: 0.3s;
+    outline: none;
 }
 
 #categorias-title{
@@ -375,6 +399,11 @@ header img {
     color: #333;
     font-size: 18px;
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 8px;
 }
 
 .categorias-nav a::after {
@@ -388,7 +417,8 @@ header img {
     transition: 0.3s;
 }
 
-.categorias-nav a:hover::after {
+.categorias-nav a:hover::after,
+.categorias-nav a:focus-visible::after {
     width: 100%;
 }
 
@@ -401,6 +431,7 @@ header img {
 
     .categorias-nav a {
         font-size: 15px;
+        min-height: 44px;
     }
 }
 
@@ -447,11 +478,11 @@ header img {
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
-    text-align: center;
+    text-align: left;
     transition: all 300ms;
-    max-height: 400px;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 16px 16px 12px;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    box-shadow: 0 6px 18px rgba(17, 17, 17, 0.08);
 
     /* Fase 4 (layout): tarjeta en columna para alinear el CTA al pie de la fila */
     display: flex;
@@ -484,18 +515,21 @@ header img {
 }
 
 .productos-card a {
-    display: inline-block;
-    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 10px;
-    padding: 8px 15px;
+    padding: 12px 18px;
+    min-height: 48px;
+    min-width: 48px;
     background: black;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     font-size: 14px;
     transition: all 300ms;
-
-
+    /* Rediseño: con la tarjeta alineada a la izquierda, el CTA acompaña el texto */
+    align-self: flex-start;
 
     background: transparent;
     border: 1px solid #111;
@@ -505,17 +539,21 @@ header img {
 @media (max-width: 500px) {
     .productos-card a {
         margin-top: 0px;
+        min-height: 48px;
     }
 }
 
-.productos-card a:hover {
+.productos-card a:hover,
+.productos-card a:focus-visible {
     background: #111;
     color: #fff;
+    outline: none;
 }
 
 
 
-.productos-card .gold:hover {
+.productos-card .gold:hover,
+.productos-card .gold:focus-visible {
     background: #d6a956;
     color: #111;
 }
@@ -528,17 +566,21 @@ header img {
 
 
 .productos-card img {
-    height: 200px;
+    height: auto;
     width: 100%;
     object-fit: cover;
+    object-position: center 20%;
     display: block;
     transition: all 420ms;
     flex: 0 0 auto;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 4 / 5;
+    /* Rediseño: radio propio (sin wrapper) + recorte del zoom en la propia imagen */
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .productos-card:hover img {
-    transform: scale(1.13);
+    transform: scale(1.03);
 }
 
 .badge,
@@ -604,10 +646,14 @@ header img {
 }
 
 .btn-ver-mas {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 10px;
     margin-bottom: 20px;
     padding: 8px 15px;
+    min-height: 44px;
+    min-width: 44px;
     background-color: black;
     border: 1px gold;
     border-radius: 10px;
@@ -617,8 +663,10 @@ header img {
     transition: all 300ms;
 }
 
-.btn-ver-mas:hover {
+.btn-ver-mas:hover,
+.btn-ver-mas:focus-visible {
     color: #b9995e;
+    outline: none;
 }
 
 
@@ -657,9 +705,15 @@ header img {
     padding: 10px;
     border-radius: 100%;
     transition: all 350ms;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 44px;
 }
 
-.social-btn:hover i {
+.social-btn:hover i,
+.social-btn:focus-visible i {
     color: white;
     background-color: #c9a96e;
 
@@ -712,9 +766,11 @@ footer {
     color: white;
 }
 
-#footer-navbar ul a:hover {
+#footer-navbar ul a:hover,
+#footer-navbar ul a:focus-visible {
     color: #c9a96e;
     text-decoration: underline;
+    outline: none;
 }
 
 .footer-info p {
@@ -729,6 +785,11 @@ footer {
     transition: 0.3s;
     margin: 5px;
     margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 8px;
 }
 
 
@@ -744,10 +805,12 @@ footer {
 
 
 
-.botones-footer a:hover {
+.botones-footer a:hover,
+.botones-footer a:focus-visible {
     transform: scale(1.05);
     opacity: 0.9;
     color: #c9a96e;
+    outline: none;
 }
 
 
