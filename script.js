@@ -1,13 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const toggle = document.querySelector('.menu-toggle');
     const menu = document.getElementById('menu-principal');
+    const navigation = document.getElementById('navbar');
+    const categoryLinks = document.querySelectorAll('.categorias-nav a');
 
-    if (!toggle || !menu) return;
+    if (!toggle || !menu || !navigation) return;
 
-    const closeMenu = () => {
+    const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+
+    const closeMenu = ({ restoreFocus = false } = {}) => {
+        if (!isOpen()) return;
         menu.classList.remove('is-open');
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-label', 'Abrir menú');
+        if (restoreFocus) toggle.focus();
     };
 
     const openMenu = () => {
@@ -17,27 +23,34 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     toggle.addEventListener('click', () => {
-        const isOpen = menu.classList.contains('is-open');
-        if (isOpen) {
-            closeMenu();
-        } else {
-            openMenu();
+        if (isOpen()) closeMenu();
+        else openMenu();
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => closeMenu());
+    });
+
+    // Category links also close the disclosure if it is open, then follow their existing anchor.
+    categoryLinks.forEach((link) => {
+        link.addEventListener('click', () => closeMenu());
+    });
+
+    document.addEventListener('pointerdown', (event) => {
+        if (!isOpen() || navigation.contains(event.target)) return;
+        const focusedMenuItem = menu.contains(document.activeElement);
+        const categoryTarget = event.target instanceof Element && event.target.closest('.categorias-nav a');
+        closeMenu({ restoreFocus: focusedMenuItem && !categoryTarget });
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && isOpen()) {
+            event.preventDefault();
+            closeMenu({ restoreFocus: true });
         }
     });
 
-    // Cierra el menú al tocar un link (comportamiento esperado en mobile)
-    menu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', closeMenu);
-    });
-
-    // Cierra con Escape (accesibilidad de teclado)
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closeMenu();
-    });
-
-    // Si el usuario rota el dispositivo o agranda la ventana hasta desktop,
-    // aseguramos que el menú no quede "abierto" colgando en el layout de escritorio
     window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) closeMenu();
+        if (window.innerWidth > 767) closeMenu();
     });
 });

@@ -42,10 +42,12 @@
             document.querySelectorAll('.productos-card')
         );
         var titulos = Array.prototype.slice.call(
-            document.querySelectorAll('.categoria h2, .categoria h3, #categorias-title')
+            document.querySelectorAll('.categoria > h2, .categoria > h3, .section-title, #categorias-title')
         );
         var bloques = Array.prototype.slice.call(
-            document.querySelectorAll('#contacto')
+            document.querySelectorAll(
+                '#contacto .contact-inner > *, #contacto > h2, #contacto > p, #contacto > .botones-contacto, #footer-container > *, .footer-bottom'
+            )
         );
 
         var observados = tarjetas.concat(titulos, bloques);
@@ -66,8 +68,11 @@
                     // Escalonado suave: las tarjetas de una misma fila entran
                     // con un pequeño retardo entre sí para dar ritmo.
                     var retardo = 0;
-                    if (el.classList.contains('productos-card')) {
-                        retardo = (el.dataset.animIndice % 3) * 90;
+                    var indiceGrupo = el.parentElement
+                        ? Array.prototype.indexOf.call(el.parentElement.children, el)
+                        : 0;
+                    if (el.classList.contains('productos-card') || bloques.indexOf(el) !== -1) {
+                        retardo = Math.min(indiceGrupo, 3) * 55;
                     }
 
                     el.style.transitionDelay = retardo + 'ms';
@@ -76,32 +81,20 @@
                     // Dejamos de observar: la animación se hace una sola vez.
                     observer.unobserve(el);
 
-                    window.setTimeout(function () {
+                    el.addEventListener('transitionend', function limpiarRetardo(event) {
+                        if (event.target !== el) return;
                         el.style.transitionDelay = '';
-                    }, retardo + 700);
+                        el.removeEventListener('transitionend', limpiarRetardo);
+                    });
                 });
             },
             {
                 // Se dispara un poco antes de que el elemento entre del todo,
                 // para que la animación ya esté corriendo al llegar a la vista.
-                rootMargin: '0px 0px -60px 0px',
+                rootMargin: '0px 0px -48px 0px',
                 threshold: 0.08
             }
         );
-
-        // Índice dentro de la fila, para el escalonado.
-        var contador = {};
-        tarjetas.forEach(function (card) {
-            var grid = card.parentElement;
-            var clave = grid ? (grid.dataset.animClave || '') : '';
-            if (grid && !clave) {
-                clave = 'grid-' + (Object.keys(contador).length);
-                grid.dataset.animClave = clave;
-                contador[clave] = 0;
-            }
-            card.dataset.animIndice = contador[clave] || 0;
-            contador[clave] = (contador[clave] || 0) + 1;
-        });
 
         observados.forEach(function (el) {
             observer.observe(el);
@@ -137,18 +130,6 @@
             window.setTimeout(revelarLoSalteado, 250);
         }
 
-        // Último recurso: si tras 6s NADA se reveló, asumimos que el observer
-        // no funciona en este navegador y mostramos todo. Si algo ya se reveló,
-        // el mecanismo anda y no tocamos nada (dejamos las animaciones vivas).
-        window.setTimeout(function () {
-            var algunaVisible = observados.some(function (el) {
-                return el.classList.contains('anim-visible');
-            });
-            if (algunaVisible) return;
-            observados.forEach(function (el) {
-                el.classList.add('anim-visible');
-            });
-        }, 6000);
     }
 
     /* ------------------------------------------------------------------ *
