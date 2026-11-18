@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-type="product">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Jónica Accesories: joyas y accesorios únicos para resaltar tu estilo. Anillos, collares, pulseras y aritos. Consultá precios y disponibilidad por WhatsApp.">
+    <meta name="page-type" content="product">
+    <meta name="site-kind" content="other">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Jónica Accesories">
     <meta property="og:title" content="Jónica Accesories | Joyas que resaltan tu estilo">
@@ -14,15 +16,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="shortcut icon" href="media/Letra caligráfica _J_ elegante 400.png" type="image/x-icon">
     <script src="script.js" defer></script>
-    <script src="animaciones.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Jónica Accesories</title>
 </head>
 
 
 <body>
-    <header>
-        <img src="media/Letra caligráfica _J_ elegante 400.png" alt="Jónica">
-        <nav id="navbar">
+    <a class="skip-link" href="#top">Saltar al contenido</a>
+    <!-- Taste: producto físico, fotografía real, composición editorial y paleta/tipografías definidas por el brief. -->
+    <header class="site-header">
+        <a class="brand-mark" href="#top" aria-label="Jónica, inicio"><img src="media/Letra caligráfica _J_ elegante 400.png" alt="Jónica" width="56" height="56"></a>
+        <nav id="navbar" aria-label="Navegación principal">
             <button type="button" class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
                 <span></span>
                 <span></span>
@@ -35,60 +41,40 @@
             </ul>
         </nav>
     </header>
-    <section class="hero" id="hero-slider" tabindex="-1">
+    <main id="top">
+        <section class="hero editorial-hero" aria-labelledby="home-title">
+            <div class="hero-copy">
+                <h1 id="home-title">Joyas que resaltan tu estilo</h1>
+                <p>Descubrí nuestra colección de piezas únicas.</p>
+                <a href="catalogo.html" class="btn">Ver catálogo</a>
+            </div>
+            <div class="hero-image">
+                <img src="media/hero3.jpeg" alt="Collares dispuestos sobre una tela clara" width="1200" height="1600" fetchpriority="high" loading="lazy" decoding="async">
+            </div>
+        </section>
 
-        <div class="slide slide1 is-activo"></div>
-        <div class="slide slide2"></div>
-        <div class="slide slide3"></div>
-
-        <button type="button" class="slider-flecha slider-prev" aria-label="Imagen anterior">
-            <span aria-hidden="true">&#8249;</span>
-        </button>
-        <button type="button" class="slider-flecha slider-next" aria-label="Imagen siguiente">
-            <span aria-hidden="true">&#8250;</span>
-        </button>
-
-        <div class="slider-puntos">
-            <button type="button" class="slider-punto is-activo" aria-label="Ver imagen 1 de 3"></button>
-            <button type="button" class="slider-punto" aria-label="Ver imagen 2 de 3"></button>
-            <button type="button" class="slider-punto" aria-label="Ver imagen 3 de 3"></button>
-        </div>
-
-
-        <div class="hero-text">
-
-            <h1>Joyas que resaltan tu estilo</h1>
-
-            <p>Descubrí nuestra colección de piezas únicas.</p>
-
-            <a href="catalogo.html" class="btn">Ver catálogo</a>
-
-        </div>
-
-    </section>
-
-    <h2 id="categorias-title">Categorías</h2>
+    <h2 id="categorias-title" class="section-title">Categorías</h2>
 
 
 
-    <div class="categorias-nav ">
+    <nav class="categorias-nav" aria-label="Categorías de productos">
         <a href="#anillos-section">Anillos</a>
         <a href="#collares-section">Collares</a>
         <a href="#pulseras-section">Pulseras</a>
         <a href="#aros-section">Aritos</a>
-    </div>
+    </nav>
 
 
 
-    <section id="categorias">
+    <section id="categorias" aria-labelledby="categorias-title">
         <article id="anillos-section" class="categoria">
 
-            <h3 class="autoShow">ANILLOS</h3>
+            <h3>ANILLOS</h3>
 
             <div class="productos-grid">
 
-                <div class="productos-card autoShow">
-                    <img src="media/anillo anti estres.jpg" alt="Anillo Anti Estrés">
+                <div class="productos-card">
+                    <img src="media/anillo anti estres.jpg" alt="Anillo Anti Estrés" loading="lazy" decoding="async">
                     <div class="producto-info">
                         <p>Anillo Anti Estrés</p>
                         <p>$11.800</p>
@@ -101,8 +87,8 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
-                    <img src="media/anillo dulce.jpg" alt="Anillo Dulce">
+                <div class="productos-card">
+                    <img src="media/anillo dulce.jpg" alt="Anillo Dulce" loading="lazy" decoding="async">
                     <div class="producto-info">
                         <p>Anillo Dulce</p>
                         <p>$7.600</p>
@@ -115,8 +101,8 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
-                    <img src="media/anillo rio.jpg" alt="Anillo Rio">
+                <div class="productos-card">
+                    <img src="media/anillo rio.jpg" alt="Anillo Rio" loading="lazy" decoding="async">
                     <div class="producto-info">
                         <p>Anillo Rio</p>
                         <p>$7.600</p>
@@ -129,7 +115,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/anillo primavera.jpg" alt="Anillo Primavera">
                     <div class="producto-info">
                         <p>Anillo Primavera</p>
@@ -143,7 +129,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/anillo arena.jpg" alt="Anillo Arena">
                     <div class="producto-info">
                         <p>Anillo Arena</p>
@@ -157,7 +143,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/anillo esmeralda.jpg" alt="Anillo Esmeralda">
                     <div class="producto-info">
                         <p>Anillo Esmeralda</p>
@@ -171,18 +157,18 @@
                     <span class="badge2">Oferta</span>
                 </div>
             </div>
-            <a href="catalogo.html" class="btn-ver-mas autoShow">Ver más →</a>
+            <a href="catalogo.html" class="btn-ver-mas">Ver más →</a>
         </article>
 
 
         <article id="collares-section" class="categoria">
 
-            <h3 class="autoShow">COLLARES</h3>
+            <h3>COLLARES</h3>
 
             <div class="productos-grid">
 
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/cadenita estrella.jpg" alt="Cadenita Estrella">
                     <div class="producto-info">
                         <p>Cadenita Estrella</p>
@@ -196,7 +182,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/cadenita lina.jpg" alt="Cadenita Lina">
                     <div class="producto-info">
                         <p>Cadenita Lina</p>
@@ -210,7 +196,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/cadenita luz.png" alt="Cadenita Luz">
                     <div class="producto-info">
                         <p>Cadenita Luz</p>
@@ -224,7 +210,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow sin-stock">
+                <div class="productos-card sin-stock">
                     <img loading="lazy" decoding="async" src="media/cadenita gota.jpg" alt="Cadenita Gota">
                     <div class="producto-info">
                         <p>Cadenita Gota</p>
@@ -238,7 +224,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/cadenita mama.jpg" alt="Cadenita Mamá">
                     <div class="producto-info">
                         <p>Cadenita Mamá</p>
@@ -252,7 +238,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow sin-stock">
+                <div class="productos-card sin-stock">
                     <img loading="lazy" decoding="async" src="media/cadenita perla.jpg" alt="Cadenita Perla">
                     <div class="producto-info">
                         <p>Cadenita Perla</p>
@@ -267,18 +253,18 @@
                 </div>
 
             </div>
-            <a href="catalogo.html" class="btn-ver-mas autoShow">Ver más →</a>
+            <a href="catalogo.html" class="btn-ver-mas">Ver más →</a>
         </article>
 
 
         <article id="pulseras-section" class="categoria">
 
-            <h3 class="autoShow">PULSERAS</h3>
+            <h3>PULSERAS</h3>
 
             <div class="productos-grid">
 
 
-                <div class="productos-card autoShow sin-stock">
+                <div class="productos-card sin-stock">
                     <img loading="lazy" decoding="async" src="media/Esclava Corona de Laurel.jpg" alt="Esclava Corona de Laurel">
                     <div class="producto-info">
                         <p>Esclava Corona de Laurel</p>
@@ -292,7 +278,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/pulsera marina.png" alt="Pulsera Marina">
                     <div class="producto-info">
                         <p>Pulsera Marina</p>
@@ -306,7 +292,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/pulsera-victoria-dorada.jpg" alt="Pulsera Victoria">
                     <div class="producto-info">
                         <p>Pulsera Victoria</p>
@@ -320,7 +306,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/pulsera-alma-dorada.jpg" alt="Pulsera Alma">
                     <div class="producto-info">
                         <p>Pulsera Alma</p>
@@ -334,7 +320,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/pulsera-clara-dorada.jpg" alt="Pulsera Clara">
                     <div class="producto-info">
                         <p>Pulsera Clara</p>
@@ -348,7 +334,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/pulsera-luz-dorada.jpg" alt="Pulsera Luz">
                     <div class="producto-info">
                         <p>Pulsera Luz</p>
@@ -364,16 +350,16 @@
 
 
             </div>
-            <a href="catalogo.html" class="btn-ver-mas autoShow">Ver más →</a>
+            <a href="catalogo.html" class="btn-ver-mas">Ver más →</a>
         </article>
 
         <article id="aros-section" class="categoria">
 
-            <h3 class="autoShow">ARITOS</h3>
+            <h3>ARITOS</h3>
 
             <div class="productos-grid">
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/abridores colibri.jpg" alt="Abridores Colibrí">
                     <div class="producto-info">
                         <p>Abridores Colibrí</p>
@@ -389,7 +375,7 @@
 
 
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/aros dianna.jpg" alt="Aritos Dianna">
                     <div class="producto-info">
                         <p>Aritos Dianna</p>
@@ -403,7 +389,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow sin-stock">
+                <div class="productos-card sin-stock">
                     <img loading="lazy" decoding="async" src="media/aros-perlas-dorados.jpg" alt="Aros con Perlas Dorados">
                     <div class="producto-info">
                         <p>Ojos con Perlas</p>
@@ -417,7 +403,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow sin-stock">
+                <div class="productos-card sin-stock">
                     <img loading="lazy" decoding="async" src="media/argolla con brillos.jpg" alt="Argollas con Brillos">
                     <div class="producto-info">
                         <p>Argollas con Brillos</p>
@@ -431,7 +417,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow sin-stock">
+                <div class="productos-card sin-stock">
                     <img loading="lazy" decoding="async" src="media/Aritos Diamante Rosa.jpg" alt="Aritos Diamante Rosa">
                     <div class="producto-info">
                         <p>Aritos Diamante Rosa</p>
@@ -445,7 +431,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow sin-stock">
+                <div class="productos-card sin-stock">
                     <img loading="lazy" decoding="async" src="media/aros cuadrados con brillos.jpg" alt="Aritos Brillos">
                     <div class="producto-info">
                         <p>Aritos Brillos</p>
@@ -459,18 +445,18 @@
                     <span class="badge2">Oferta</span>
                 </div>
             </div>
-            <a href="catalogo.html" class="btn-ver-mas autoShow">Ver más →</a>
+            <a href="catalogo.html" class="btn-ver-mas">Ver más →</a>
         </article>
 
 
 
         <article class="categoria">
 
-            <h3 class="autoShow">OTROS</h3>
+            <h3>OTROS</h3>
 
             <div class="productos-grid">
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/Tobillera Margarita.jpg" alt="Tobillera Margarita">
                     <div class="producto-info">
                         <p>Tobillera Margarita</p>
@@ -485,7 +471,7 @@
                 </div>
 
 
-                <div class="productos-card autoShow sin-stock">
+                <div class="productos-card sin-stock">
                     <img loading="lazy" decoding="async" src="media/dijes corazon.jpg" alt="Dijes de Corazón">
                     <div class="producto-info">
                         <p>Dijes de Corazón</p>
@@ -501,7 +487,7 @@
 
 
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/dije-signo-leo.jpg" alt="Dije del Signo Leo">
                     <div class="producto-info">
                         <p>Dije del Signo Leo</p>
@@ -515,7 +501,7 @@
                     <span class="badge2">Oferta</span>
                 </div>
 
-                <div class="productos-card autoShow">
+                <div class="productos-card">
                     <img loading="lazy" decoding="async" src="media/piercings-corazon.jpg" alt="Piercings de Corazón">
                     <div class="producto-info">
                         <p>Piercings de Corazón</p>
@@ -530,13 +516,14 @@
                 </div>
 
             </div>
-            <a href="catalogo.html" class="btn-ver-mas autoShow">Ver más →</a>
+            <a href="catalogo.html" class="btn-ver-mas">Ver más →</a>
         </article>
 
     </section>
 
-    <div id="contacto" class="autoShow">
-        <h2>CONTACTO</h2>
+    <section id="contacto" class="contact-section" aria-labelledby="contact-title">
+        <div class="contact-inner">
+        <h2 id="contact-title">CONTACTO</h2>
         <p>
             ¿Te gustó algún producto?
         </p>
@@ -558,17 +545,19 @@
 
 
 
-    </div>
+        </div>
+    </section>
+    </main>
 
-<footer>
+<footer id="site-footer">
     <div id="footer-container">
 
         <div id="footer-marca">
-            <img loading="lazy" decoding="async" src="media/Letra _F_ caligráfica elegante 400.png" alt="logo de la Marca" width="120px">
+            <img loading="lazy" decoding="async" src="media/Letra _F_ caligráfica elegante 400.png" alt="" role="presentation" width="120px">
             <p>Jónica Accesories</p>
         </div>
 
-        <nav id="footer-navbar">
+        <nav id="footer-navbar" aria-label="Navegación del pie">
             <ul>
                 <li><a href="#top">Inicio</a></li>
                 <li><a href="catalogo.html">Catálogo</a></li>

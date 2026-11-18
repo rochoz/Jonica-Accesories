@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-type="product">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Catálogo completo de Jónica Accesories: anillos, collares, pulseras y aritos. Consultá precios y disponibilidad por WhatsApp.">
+    <meta name="page-type" content="product">
+    <meta name="site-kind" content="other">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Jónica Accesories">
     <meta property="og:title" content="Catálogo | Jónica Accesories">
@@ -14,14 +16,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="shortcut icon" href="media/Letra caligráfica _J_ elegante 400.png" type="image/x-icon">
     <script src="script.js" defer></script>
-    <script src="animaciones.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Jónica Accesories</title>
 </head>
 
 <body>
-    <header>
-        <img src="media/Letra caligráfica _J_ elegante 400.png" alt="Jónica">
-        <nav id="navbar">
+    <a class="skip-link" href="#top">Saltar al contenido</a>
+    <!-- Taste: producto físico, fotografía real, composición editorial y paleta/tipografías definidas por el brief. -->
+    <header class="site-header">
+        <a class="brand-mark" href="index.html#top" aria-label="Jónica, inicio"><img src="media/Letra caligráfica _J_ elegante 400.png" alt="Jónica" width="56" height="56"></a>
+        <nav id="navbar" aria-label="Navegación principal">
             <button type="button" class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
                 <span></span>
                 <span></span>
@@ -34,26 +40,29 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <div id="hero">
-            <h1>CATÁLOGO</h1>
-            <p>Donde cada pieza te hará sentir como una diosa.</p>
-        </div>
+    <main id="top">
+        <section id="hero" class="catalog-hero" aria-labelledby="catalog-title">
+            <div class="catalog-copy">
+                <h1 id="catalog-title">CATÁLOGO</h1>
+                <p>Donde cada pieza te hará sentir como una diosa.</p>
+            </div>
+            <div class="catalog-image"><img src="media/hero4.jpeg" alt="Selección de joyas dispuestas sobre una tela oscura" width="1200" height="1600" fetchpriority="high" loading="lazy" decoding="async"></div>
+        </section>
 
-        <div class="categorias-nav">
+        <nav class="categorias-nav catalog-categories" aria-label="Categorías del catálogo">
             <a href="#anillos">Anillos</a>
             <a href="#collares">Collares</a>
             <a href="#pulseras">Pulseras</a>
             <a href="#aritos">Aritos</a>
-        </div>
+        </nav>
 
         <section>
             <article id="anillos" class="categoria">
                 <h2>ANILLOS</h2>
                 <div class="productos-grid">
 
-                    <div class="productos-card autoShow">
-                        <img src="media/anillo anti estres.jpg" alt="Anillo Anti Estrés">
+                    <div class="productos-card">
+                        <img src="media/anillo anti estres.jpg" alt="Anillo Anti Estrés" loading="lazy" decoding="async">
                         <div class="producto-info">
                             <p>Anillo Anti Estrés</p>
                             <p>$11.800</p>
@@ -66,8 +75,8 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
-                        <img src="media/anillo dulce.jpg" alt="Anillo Dulce">
+                    <div class="productos-card">
+                        <img src="media/anillo dulce.jpg" alt="Anillo Dulce" loading="lazy" decoding="async">
                         <div class="producto-info">
                             <p>Anillo Dulce</p>
                             <p>$7.600</p>
@@ -80,8 +89,8 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
-                        <img src="media/anillo rio.jpg" alt="Anillo Rio">
+                    <div class="productos-card">
+                        <img src="media/anillo rio.jpg" alt="Anillo Rio" loading="lazy" decoding="async">
                         <div class="producto-info">
                             <p>Anillo Rio</p>
                             <p>$7.600</p>
@@ -94,7 +103,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/anillo primavera.jpg" alt="Anillo Primavera">
                         <div class="producto-info">
                             <p>Anillo Primavera</p>
@@ -108,7 +117,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/anillo arena.jpg" alt="Anillo Arena">
                         <div class="producto-info">
                             <p>Anillo Arena</p>
@@ -122,7 +131,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/anillo esmeralda.jpg" alt="Anillo Esmeralda">
                         <div class="producto-info">
                             <p>Anillo Esmeralda</p>
@@ -136,7 +145,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/anillo estela.jpg" alt="Anillo Estela">
                         <div class="producto-info">
                             <p>Anillo Estela</p>
@@ -150,7 +159,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/anillo-patita-plateada.jpg" alt="Anillo Patita Plateado">
                         <div class="producto-info">
                             <p>Anillo Patita Plateado</p>
@@ -166,7 +175,7 @@
 
 
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/anillo-diamante-plateado.jpg" alt="Anillo Plateado con Cristal">
                         <div class="producto-info">
                             <p>Anillo Plateado con Cristal</p>
@@ -180,7 +189,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/Anillo Lia.jpg" alt="Anillo Lia">
                         <div class="producto-info">
                             <p>Anillo Lia</p>
@@ -194,7 +203,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/Anillo Princesa.jpg" alt="Anillo Princesa">
                         <div class="producto-info">
                             <p>Anillo Princesa</p>
@@ -208,7 +217,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/Anillo Colo.jpg" alt="Anillo Colo">
                         <div class="producto-info">
                             <p>Anillo Colo</p>
@@ -222,7 +231,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/Anillo Gota.jpg" alt="Anillo Gota">
                         <div class="producto-info">
                             <p>Anillo Gota</p>
@@ -237,7 +246,7 @@
                     </div>
 
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/Anillo Lluvia.jpg" alt="Anillo Lluvia">
                         <div class="producto-info">
                             <p>Anillo Lluvia</p>
@@ -253,7 +262,7 @@
 
 
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/anillo-enredado-plateado.jpg" alt="Anillo Enredado Plateado">
                         <div class="producto-info">
                             <p>Anillo Enredado Plateado</p>
@@ -267,7 +276,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/anillo-estrella-mar.jpg" alt="Anillo Estrella de Mar Plateado">
                         <div class="producto-info">
                             <p>Anillo Estrella de Mar Plateado</p>
@@ -281,7 +290,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/anillo-grueso-plateado.jpg" alt="Anillo Grueso Plateado">
                         <div class="producto-info">
                             <p>Anillo Grueso Plateado</p>
@@ -295,7 +304,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/anillo-mariposa-plateada.jpg" alt="Anillo Mariposa Plateado">
                         <div class="producto-info">
                             <p>Anillo Mariposa Plateado</p>
@@ -309,7 +318,7 @@
                         <span class="badge2">Oferta</span>
                     </div> 
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/anillo-destellos.jpg" alt="Anillo Destellos">
                         <div class="producto-info">
                             <p>Anillo Destellos</p>
@@ -323,7 +332,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/anillo-diamante-rosa.jpg" alt="Anillo con Diamante Rosa">
                         <div class="producto-info">
                             <p>Anillo con Diamante Rosa</p>
@@ -337,7 +346,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/anillo-mar.jpg" alt="Anillo Mar">
                         <div class="producto-info">
                             <p>Anillo Mar</p>
@@ -351,7 +360,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/anillo-pelotita-plateada.jpg" alt="Anillo con Pelotita Plateada">
                         <div class="producto-info">
                             <p>Anillo con Pelotita</p>
@@ -369,11 +378,11 @@
 
             <article id="collares" class="categoria">
 
-                <h2 class="autoShow">COLLARES</h2>
+                <h2>COLLARES</h2>
 
                 <div class="productos-grid">
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/cadenita estrella.jpg" alt="Cadenita Estrella">
                         <div class="producto-info">
                             <p>Cadenita Estrella</p>
@@ -387,7 +396,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/cadenita lina.jpg" alt="Cadenita Lina">
                         <div class="producto-info">
                             <p>Cadenita Lina</p>
@@ -401,7 +410,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/cadenita luz.png" alt="Cadenita Luz">
                         <div class="producto-info">
                             <p>Cadenita Luz</p>
@@ -415,7 +424,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita gota.jpg" alt="Cadenita Gota">
                         <div class="producto-info">
                             <p>Cadenita Gota</p>
@@ -429,7 +438,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/cadenita mama.jpg" alt="Cadenita Mamá">
                         <div class="producto-info">
                             <p>Cadenita Mamá</p>
@@ -443,7 +452,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita perla.jpg" alt="Cadenita Perla">
                         <div class="producto-info">
                             <p>Cadenita Perla</p>
@@ -457,7 +466,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita isabella.jpg" alt="Cadenita Isabella">
                         <div class="producto-info">
                             <p>Cadenita Isabella</p>
@@ -473,7 +482,7 @@
 
                     
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita manzana roja.jpg" alt="Cadenita Manzana Roja">
                         <div class="producto-info">
                             <p>Cadenita Manzana Roja</p>
@@ -487,7 +496,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita flora.jpg" alt="Cadenita Flora">
                         <div class="producto-info">
                             <p>Cadenita Flora</p>
@@ -503,7 +512,7 @@
 
 
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita lua.jpg" alt="Cadenita Lua">
                         <div class="producto-info">
                             <p>Cadenita Lua</p>
@@ -517,7 +526,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita mari.jpg" alt="Cadenita Mari">
                         <div class="producto-info">
                             <p>Cadenita Mari</p>
@@ -534,7 +543,7 @@
 
 
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita-corazones-diamante.jpg" alt="Cadenita de Corazones de Diamante">
                         <div class="producto-info">
                             <p>Cadenita de Corazones de Diamante</p>
@@ -548,7 +557,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita-hojas-diamantes-dorada.jpg" alt="Cadenita de Hojas de Diamante">
                         <div class="producto-info">
                             <p>Cadenita de Hojas de Diamante</p>
@@ -562,7 +571,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita-moño-dorada.jpg" alt="Cadenita de Moño">
                         <div class="producto-info">
                             <p>Cadenita de Moño</p>
@@ -576,7 +585,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita-serpiente-dorada.jpg" alt="Cadenita Serpiente Dorada">
                         <div class="producto-info">
                             <p>Cadenita Serpiente</p>
@@ -590,7 +599,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita-serpiente-plateada.jpg" alt="Cadenita Serpiente Plateada">
                         <div class="producto-info">
                             <p>Cadenita Serpiente</p>
@@ -604,7 +613,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/cadenita-doble-plateada.jpg" alt="Cadenita Doble">
                         <div class="producto-info">
                             <p>Cadenita Doble</p>
@@ -624,13 +633,13 @@
 
             <article id="pulseras" class="categoria">
 
-                <h2 class="autoShow">PULSERAS</h2>
+                <h2>PULSERAS</h2>
 
                 
 
                 <div class="productos-grid">
 
-                    <div class="productos-card autoShow ">
+                    <div class="productos-card ">
                         <img loading="lazy" decoding="async" src="media/pulsera talia.jpg" alt="Pulsera Talia">
                         <div class="producto-info">
                             <p>Pulsera Talia</p>
@@ -644,7 +653,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow ">
+                    <div class="productos-card ">
                         <img loading="lazy" decoding="async" src="media/pulsera mile.jpg" alt="Pulsera Mile">
                         <div class="producto-info">
                             <p>Pulsera Mile</p>
@@ -658,7 +667,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow ">
+                    <div class="productos-card ">
                         <img loading="lazy" decoding="async" src="media/pulsera moca.jpg" alt="Pulsera Moca">
                         <div class="producto-info">
                             <p>Pulsera Moca</p>
@@ -672,7 +681,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/Esclava Corona de Laurel.jpg" alt="Esclava Corona de Laurel">
                         <div class="producto-info">
                             <p>Esclava Corona de Laurel</p>
@@ -686,7 +695,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/pulsera marina.png" alt="Pulsera Marina">
                         <div class="producto-info">
                             <p>Pulsera Marina</p>
@@ -700,7 +709,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/pulsera-victoria-dorada.jpg" alt="Pulsera Victoria">
                         <div class="producto-info">
                             <p>Pulsera Victoria</p>
@@ -714,7 +723,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/pulsera-alma-dorada.jpg" alt="Pulsera Alma">
                         <div class="producto-info">
                             <p>Pulsera Alma</p>
@@ -728,7 +737,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/pulsera-clara-dorada.jpg" alt="Pulsera Clara">
                         <div class="producto-info">
                             <p>Pulsera Clara</p>
@@ -742,7 +751,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/pulsera-luz-dorada.jpg" alt="Pulsera Luz">
                         <div class="producto-info">
                             <p>Pulsera Luz</p>
@@ -756,7 +765,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/pulsera-Lía-dorada.jpg" alt="Pulsera Lía">
                         <div class="producto-info">
                             <p>Pulsera Lía</p>
@@ -772,7 +781,7 @@
 
                     
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/esclava-lisa-dorada.jpg" alt="Esclava Lisa Dorada">
                         <div class="producto-info">
                             <p>Esclava Lisa</p>
@@ -786,7 +795,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow ">
+                    <div class="productos-card ">
                         <img loading="lazy" decoding="async" src="media/esclava-cola-sirena.jpg" alt="Esclava Cola de Sirena">
                         <div class="producto-info">
                             <p>Esclava Cola de Sirena</p>
@@ -800,7 +809,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/esclava-regulable-dorada.jpeg" alt="Esclava Regulable Dorada">
                         <div class="producto-info">
                             <p>Esclava Regulable</p>
@@ -815,7 +824,7 @@
                     </div>
 
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/pulsera-sol.jpg" alt="Pulsera Sol">
                         <div class="producto-info">
                             <p>Pulsera Sol</p>
@@ -833,7 +842,7 @@
 
 
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/pulsera-eclipse.jpg" alt="Pulsera Eclipse">
                         <div class="producto-info">
                             <p>Pulsera Eclipse</p>
@@ -849,7 +858,7 @@
 
 
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/pulsera-serpiente.jpg" alt="Pulsera Serpiente">
                         <div class="producto-info">
                             <p>Pulsera Serpiente</p>
@@ -865,7 +874,7 @@
 
 
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/pulsera-luna.jpeg" alt="Pulsera Luna">
                         <div class="producto-info">
                             <p>Pulsera Luna</p>
@@ -885,7 +894,7 @@
 
             <article id="aritos" class="categoria">
 
-                <h2 class="autoShow">ARITOS</h2>
+                <h2>ARITOS</h2>
 
                 
 
@@ -893,7 +902,7 @@
 
                 <div class="productos-grid">
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/aritos yeri.jpg" alt="Aros Yeri">
                         <div class="producto-info">
                             <p>Aros Yeri</p>
@@ -908,7 +917,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/aros ornella.jpg" alt="Aros Ornella">
                         <div class="producto-info">
                             <p>Aros Ornella</p>
@@ -923,7 +932,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/aros blanca.jpg" alt="Aros Blanca">
                         <div class="producto-info">
                             <p>Aros Blanca</p>
@@ -938,7 +947,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/aros rada.jpg" alt="Aros Rada">
                         <div class="producto-info">
                             <p>Aros Rada</p>
@@ -953,7 +962,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/aros bris.jpg" alt="Aros Brisa">
                         <div class="producto-info">
                             <p>Aros Brisa</p>
@@ -968,7 +977,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/aros amelia.jpg" alt="Aros Amelia">
                         <div class="producto-info">
                             <p>Aros Amelia</p>
@@ -983,7 +992,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/aros mikal.jpg" alt="Aros Mikal">
                         <div class="producto-info">
                             <p>Aros Mikal</p>
@@ -998,7 +1007,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/abridores colibri.jpg" alt="Abridores Colibrí">
                         <div class="producto-info">
                             <p>Abridores Colibrí</p>
@@ -1012,7 +1021,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/aros anna.jpg" alt="Aros Anna">
                         <div class="producto-info">
                             <p>Aros Anna</p>
@@ -1027,7 +1036,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/aros dianna.jpg" alt="Aritos Dianna">
                         <div class="producto-info">
                             <p>Aritos Dianna</p>
@@ -1041,7 +1050,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/aros-perlas-dorados.jpg" alt="Aros con Perlas Dorados">
                         <div class="producto-info">
                             <p>Ojos con Perlas</p>
@@ -1055,7 +1064,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/argolla con brillos.jpg" alt="Argollas con Brillos">
                         <div class="producto-info">
                             <p>Argollas con Brillos</p>
@@ -1069,7 +1078,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/Aritos Diamante Rosa.jpg" alt="Aritos Diamante Rosa">
                         <div class="producto-info">
                             <p>Aritos Diamante Rosa</p>
@@ -1083,7 +1092,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/aros cuadrados con brillos.jpg" alt="Aritos Brillos">
                         <div class="producto-info">
                             <p>Aritos Brillos</p>
@@ -1097,7 +1106,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/aros colibri blancos.jpg" alt="Aros de Colibrí">
                         <div class="producto-info">
                             <p>Aros de Colibrí</p>
@@ -1112,7 +1121,7 @@
                     </div>
 
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/colgantes-perlas-dorados.jpg" alt="Colgantes con Perlas Dorados">
                         <div class="producto-info">
                             <p>Colgantes con Perlas</p>
@@ -1126,7 +1135,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/aros-diamante.jpg" alt="Aros con Diamante">
                         <div class="producto-info">
                             <p>Aros con Diamante</p>
@@ -1140,7 +1149,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/aros-hojas-plateadas.jpg" alt="Aros Hojas Plateadas">
                         <div class="producto-info">
                             <p>Aros Hojas Plateadas</p>
@@ -1154,7 +1163,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow oferta sin-stock">
+                    <div class="productos-card oferta sin-stock">
                         <img loading="lazy" decoding="async" src="media/aros-hojas-laurel.jpg" alt="Aros Hojas de Laurel">
                         <div class="producto-info">
                             <p>Aros Hojas de Laurel</p>
@@ -1171,7 +1180,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/aros-ojos-brillantes.jpg" alt="Aros Ojos Brillantes">
                         <div class="producto-info">
                             <p>Aros con Perlas</p>
@@ -1185,7 +1194,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock oferta">
+                    <div class="productos-card sin-stock oferta">
                         <img loading="lazy" decoding="async" src="media/argollas-finas-doradas.jpg" alt="Argollas Finas Doradas">
                         <div class="producto-info">
                             <p>Argollas Finas </p>
@@ -1202,7 +1211,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock oferta">
+                    <div class="productos-card sin-stock oferta">
                         <img loading="lazy" decoding="async" src="media/argollas-medianas-doradas.jpg" alt="Argollas Medianas Doradas">
                         <div class="producto-info">
                             <p>Argollas Medianas </p>
@@ -1220,7 +1229,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/aros-flor-lirio.jpg" alt="Aros Flor de Lirio">
                         <div class="producto-info">
                             <p>Aros Lirio</p>
@@ -1242,11 +1251,11 @@
 
             <article class="categoria">
 
-                <h2 class="autoShow">OTROS</h2>
+                <h2>OTROS</h2>
 
                 <div class="productos-grid">
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/Tobillera Margarita.jpg" alt="Tobillera Margarita">
                         <div class="producto-info">
                             <p>Tobillera Margarita</p>
@@ -1261,7 +1270,7 @@
                     </div>
 
 
-                    <div class="productos-card autoShow sin-stock">
+                    <div class="productos-card sin-stock">
                         <img loading="lazy" decoding="async" src="media/dijes corazon.jpg" alt="Dijes de Corazón">
                         <div class="producto-info">
                             <p>Dijes de Corazón</p>
@@ -1276,7 +1285,7 @@
                     </div>
 
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/dije-signo-leo.jpg" alt="Dije del Signo Leo">
                         <div class="producto-info">
                             <p>Dije del Signo Leo</p>
@@ -1290,7 +1299,7 @@
                         <span class="badge2">Oferta</span>
                     </div>
 
-                    <div class="productos-card autoShow">
+                    <div class="productos-card">
                         <img loading="lazy" decoding="async" src="media/piercings-corazon.jpg" alt="Piercings de Corazón">
                         <div class="producto-info">
                             <p>Piercings de Corazón</p>
@@ -1308,8 +1317,8 @@
             </article>
         </section>
 
-        <div id="contacto" class="autoShow">
-            <h2>CONTACTO</h2>
+        <section id="contacto" aria-labelledby="contacto-titulo">
+            <h2 id="contacto-titulo">CONTACTO</h2>
             <p>
                 ¿Te gustó algún producto?
             </p>
@@ -1329,7 +1338,7 @@
 
             </div>
 
-        </div>
+        </section>
 
     </main>
 
@@ -1337,11 +1346,11 @@
     <div id="footer-container">
 
         <div id="footer-marca">
-            <img loading="lazy" decoding="async" src="media/Letra _F_ caligráfica elegante 400.png" alt="logo de la Marca" width="120px">
+            <img loading="lazy" decoding="async" src="media/Letra _F_ caligráfica elegante 400.png" alt="" role="presentation" width="120px">
             <p>Jónica Accesories</p>
         </div>
 
-        <nav id="footer-navbar">
+        <nav id="footer-navbar" aria-label="Navegación del pie">
             <ul>
                 <li><a href="#top">Inicio</a></li>
                 <li><a href="catalogo.html">Catálogo</a></li>

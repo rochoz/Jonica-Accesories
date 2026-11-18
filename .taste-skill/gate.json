@@ -1,0 +1,43 @@
+{
+ "start": "2026-11-18T02:57:04.906Z",
+ "round": 0,
+ "idle": 0,
+ "errors": 1,
+ "status": "error",
+ "history": [
+  {
+   "at": "2026-11-18T03:01:41.044Z",
+   "mode": "manual",
+   "status": "error",
+   "fails": 0,
+   "round": 0,
+   "reused": false,
+   "stopHookActive": false
+  }
+ ],
+ "max": 3,
+ "marker": {
+  "page": "index.html",
+  "dir": "C:\\Users\\Usuario\\Desktop\\VS Code\\Jonica Joyería",
+  "kind": "product",
+  "start": "2026-11-18T02:57:04.906Z",
+  "by": "start.mjs",
+  "url": null
+ },
+ "manual": true,
+ "fp": "85300bb3c406b991",
+ "page": "index.html",
+ "found": {
+  "fails": [],
+  "warns": [],
+  "crashed": [
+   "the gate itself failed: spawn EPERM"
+  ],
+  "seconds": {}
+ },
+ "open": [],
+ "waived": [],
+ "warnCount": 0,
+ "note": "the gate itself failed: spawn EPERM",
+ "at": "2026-11-18T03:01:41.052Z"
+}

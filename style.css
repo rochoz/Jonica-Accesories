@@ -1,1075 +1,241 @@
-html {
-    scroll-behavior: smooth;
+/* Jónica — sistema Editorial / Quiet Luxury */
+:root {
+  color-scheme: light;
+  --ivory: #F8F5EF;
+  --sand: #EAE2D6;
+  --champagne: #C9B69E;
+  --taupe: #8C7560;
+  --ink: #302820;
+  --white: #FFFFFF;
+  --text: var(--ink);
+  --text-muted: #62564B;
+  --line: #D9CFC1;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", Arial, sans-serif;
+  --content: 1280px;
+  --gutter: clamp(20px, 5vw, 76px);
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 72px;
+  --space-8: 104px;
+  --focus: #6D4C2F;
 }
 
-#categorias,
-#anillos-section,
-#collares-section,
-#pulseras-section,
-#aros-section{
-    scroll-margin-top: 160px;
-}
-#contacto{
-    scroll-margin-top: 160px;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: #f8f8f8;
-    color: #111;
-    margin: 0;
+  margin: 0;
+  background: var(--ivory);
+  color: var(--text);
+  font: 400 16px/1.55 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f8f8f8;
-    position: sticky;
-    top: 0;
-   z-index: 100;
+::selection { color: var(--white); background: var(--ink); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+a { color: inherit; text-underline-offset: 4px; }
+img { display: block; max-width: 100%; }
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 100;
+  padding: 12px 16px; color: var(--white); background: var(--ink);
+  transform: translateY(-160%); text-decoration: none;
 }
-header img {
-    width: 100px;
+.skip-link:focus { transform: translateY(0); }
+.site-header {
+  position: relative; z-index: 20; min-height: 82px; padding: 12px var(--gutter);
+  display: flex; align-items: center; justify-content: space-between; gap: 32px;
+  background: var(--ivory); border-bottom: 1px solid var(--line);
 }
-#navbar ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    gap: 10px;
-    margin-right: 10px;
-
+.brand-mark { min-width: 48px; min-height: 48px; display: inline-flex; align-items: center; }
+.brand-mark img { width: 54px; height: 54px; object-fit: contain; }
+#navbar { margin-left: auto; }
+#menu-principal, #footer-navbar ul {
+  display: flex; align-items: center; gap: clamp(20px, 3vw, 44px);
+  margin: 0; padding: 0; list-style: none;
 }
-
-#navbar ul a {
-    color: black;
-    text-decoration: none;
-    font-size: 21px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 0 12px;
+#menu-principal a, #footer-navbar a {
+  min-height: 44px; display: inline-flex; align-items: center;
+  color: var(--ink); font: 500 12px/1.2 var(--font-body);
+  letter-spacing: .1em; text-decoration: none; text-transform: uppercase;
+  transition: color 180ms ease;
 }
-
-#navbar ul a:visited {
-    color: black;
+#menu-principal a:hover, #footer-navbar a:hover { color: var(--taupe); }
+.menu-toggle { display: none; }
+main { width: 100%; }
+h1, h2, h3 {
+  color: var(--ink); font-family: var(--font-display); font-weight: 400;
+  line-height: .98; letter-spacing: -.02em; text-wrap: balance;
 }
-
-#navbar ul a:hover,
-#navbar ul a:focus-visible {
-    color: goldenrod;
-    text-decoration: underline;
-    outline: none;
+h1 { font-size: clamp(48px, 6.3vw, 88px); }
+h2 { font-size: clamp(36px, 4.2vw, 58px); }
+h3 { font-size: clamp(28px, 2.5vw, 36px); }
+p { text-wrap: pretty; }
+.btn, .productos-card a, .btn-ver-mas {
+  min-height: 48px; padding: 14px 22px; display: inline-flex; align-items: center; justify-content: center;
+  color: var(--white); background: var(--ink); border: 1px solid var(--ink);
+  border-radius: 0; box-shadow: none; font: 600 11px/1.25 var(--font-body);
+  letter-spacing: .08em; text-align: center; text-decoration: none; text-transform: uppercase;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
 }
-
-/* Botón hamburguesa (oculto en desktop) */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    width: 48px;
-    height: 44px;
-    background: none;
-    border: none;
-    padding: 0;
-    margin-right: 20px;
-    cursor: pointer;
-    z-index: 101;
+.btn:hover, .productos-card a:hover:not([aria-disabled="true"]), .btn-ver-mas:hover {
+  color: var(--ink); background: transparent;
 }
-
-.menu-toggle span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: #111;
-    border-radius: 2px;
-    transition: transform 0.3s ease, opacity 0.2s ease;
-}
-
-.menu-toggle[aria-expanded="true"] span:first-child {
-    transform: translateY(7px) rotate(45deg);
-}
-
-.menu-toggle[aria-expanded="true"] span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle[aria-expanded="true"] span:last-child {
-    transform: translateY(-7px) rotate(-45deg);
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-        min-height: 48px;
-        min-width: 48px;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #navbar ul {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        gap: 0;
-        background-color: #f8f8f8;
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.08);
-
-        /* Fase 3 (optimize): sin animación de layout (max-height) */
-        opacity: 0;
-        pointer-events: none;
-        visibility: hidden;
-        transform: translateY(-8px);
-        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
-    }
-
-    #navbar ul.is-open {
-        opacity: 1;
-        pointer-events: auto;
-        visibility: visible;
-        padding: 10px 0;
-        transform: translateY(0);
-        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
-    }
-
-    #navbar ul li {
-        width: 100%;
-        text-align: center;
-    }
-
-    #navbar ul a {
-        display: flex;
-        padding: 14px 20px;
-        min-height: 48px;
-        width: 100%;
-        box-sizing: border-box;
-        justify-content: center;
-    }
-}
-
-.hero {
-    margin: 0px auto;
-    width: 100%;
-    /* min-height: el hero puede crecer si el contenido lo necesita,
-       pero nunca queda más bajo que esto. */
-    min-height: 750px;
-
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    
-    position: relative;
-
-}
-
-
-.hero::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Antes era un scrim plano al 30%: oscurecía toda la foto por igual y
-       los accesorios perdían detalle. Ahora es un gradiente que refuerza
-       donde está el texto y abajo (puntos), y deja respirar la parte
-       superior, donde se ve la pieza. */
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.15) 0%,
-        rgba(0, 0, 0, 0.35) 45%,
-        rgba(0, 0, 0, 0.65) 100%
-    );
-    z-index: 1;
-}
-
-.slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-
-    opacity: 0;
-    /* Antes eran 3 animaciones CSS desfasadas y no clicables.
-       Ahora el JS pone/quita .is-activo y aquí solo se hace la transición. */
-    transition: opacity 1000ms ease;
-}
-
-/* Estado visible del slide: lo controla el JS. */
-.slide.is-activo {
-    opacity: 1;
-}
-
-.slide1 {
-    background-image: url('media/hero.jpeg');
-}
-
-.slide2 {
-    background-image: url(media/hero1.jpeg);
-}
-
-.slide3 {
-    background-image: url(media/hero3.jpeg);
-}
-
-/* ------------------------------------------------------------------ *
- * Controles del slide (flechas + puntos)
- * ------------------------------------------------------------------ */
-
-.slider-flecha {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 3;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    /* Área táctil >= 48px */
-    width: 48px;
-    height: 48px;
-
-    background: rgba(17, 17, 17, 0.35);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    font-size: 26px;
-    line-height: 1;
-    cursor: pointer;
-
-    /* Aparecen al pasar el mouse, sin ensuciar el hero en reposo. */
-    opacity: 0;
-    transition: opacity 300ms ease, background-color 300ms ease;
-}
-
-.slider-prev {
-    left: 16px;
-}
-
-.slider-next {
-    right: 16px;
-}
-
-/* Se muestran al hover/focus sobre el hero, o cuando el control tiene foco. */
-.hero:hover .slider-flecha,
-.slider-flecha:focus-visible {
-    opacity: 1;
-}
-
-.slider-flecha:hover,
-.slider-flecha:focus-visible {
-    background: #d6a956;
-    color: #111;
-    outline: none;
-}
-
-/* En pantallas táctiles no hay hover: las flechas quedan siempre visibles. */
-@media (hover: none) {
-    .slider-flecha {
-        opacity: 1;
-    }
-}
-
-.slider-puntos {
-    position: absolute;
-    bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 2;
-}
-
-/* El botón tiene área táctil de 48px; el punto visible es el ::after. */
-.slider-punto {
-    position: relative;
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    border: none;
-    background: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.slider-punto::after {
-    content: "";
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    transition: background-color 300ms ease, transform 300ms ease;
-}
-
-.slider-punto:hover::after,
-.slider-punto:focus-visible::after {
-    background: #d6a956;
-    transform: scale(1.2);
-}
-
-.slider-punto:focus-visible {
-    outline: none;
-}
-
-/* Punto del slide activo. */
-.slider-punto.is-activo::after {
-    background: #fff;
-    transform: scale(1.2);
-}
-
-.hero-text {
-    position: relative;
-    z-index: 2;
-    max-width: 600px;
-    color: white;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.hero-text{
-    animation: fadeUp 1s ease;
-}
-
-/* Reglas base de tipografía del hero. IMPORTANTE: van ANTES de los media
-   queries de abajo. Antes estaban después y, al tener la misma
-   especificidad que `.hero h1` dentro del media query, ganaban por orden
-   en móvil (una regla posterior sin media query pisa a una anterior con
-   media query). Por eso el título seguía a 42px en el celular. */
-.hero h1 {
-    font-size: 42px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 19px;
-    margin-bottom: 30px;
-}
-
-@media (max-width: 768px) {
-    .hero {
-        /* min-height en vez de height fija: si el contenido crece, el hero
-           crece con él, así el CTA no puede superponerse con los puntos.
-           Ajustado a 450px: un punto medio entre los 520px originales (que
-           se comían la pantalla) y los 400px (demasiado ajustados). */
-        height: auto;
-        min-height: 450px;
-        /* OJO: nada de padding en el hero. Los .slide son absolutos con
-           height:100%, que se resuelve contra el content box: un padding
-           inferior dejaría una franja sin imagen (se veía gris). */
-    }
-
-    .hero-text {
-        padding: 0 20px;
-        /* La reserva de la franja de puntos va aquí, en el contenido, no en
-           el hero: así la imagen sigue cubriendo todo el alto.
-           Puntos: 44px de alto (al tocarles el borde inferior con bottom:14)
-           + 14px = 58px de franja. 76px deja ~18px de aire. */
-        margin-bottom: 76px;
-    }
-
-    .hero h1 {
-        /* Subido de 26px a 27px: 27 es el máximo que mantiene el corte
-           correcto a 320px (a 28px "Joyas que resaltan" no entra en el
-           ancho disponible y el navegador rompe como "Joyas que"). */
-        font-size: 27px;
-        line-height: 1.15;
-        /* Corte de línea controlado: "Joyas que resaltan" / "tu estilo".
-           A 27px "Joyas que resaltan" mide ~257px y "Joyas que resaltan tu"
-           ~293px, así que el max-width debe quedar entre 258 y 292.
-           280px está holgado dentro del rango y verificado en 320-768px. */
-        max-width: 280px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hero p {
-        font-size: 15px;
-    }
-
-    /* Flechas más chicas y pegadas al borde: liberan el ancho central para
-       el título y el CTA. 44px es el mínimo táctil (WCAG 2.5.5 AAA). */
-    .slider-flecha {
-        width: 44px;
-        height: 44px;
-    }
-
-    .slider-prev {
-        left: 4px;
-    }
-
-    .slider-next {
-        right: 4px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero {
-        height: auto;
-        /* Alineado con el breakpoint de 768px: 450px. */
-        min-height: 450px;
-    }
-}
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.btn {
-    background: black;
-    color: white;
-    padding: 12px 25px;
-    min-height: 48px;
-    min-width: 48px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 500;
-}
-
-.btn:hover,
-.btn:focus-visible {
-    background: #333;
-    transition: 0.3s;
-    outline: none;
-}
-
-#categorias-title{
-    text-align: center;
-    font-size: 35px;
-    /* Transición intencional después del hero: antes usaba el margen por
-       defecto del navegador (~29px), que era un accidente, no una decisión. */
-    margin-top: 0;
-    padding-top: 36px;
-}
-
+.btn:active, .productos-card a:active:not([aria-disabled="true"]) { transform: translateY(1px); }
 .categorias-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 15px 10px;
-
-    background: white;
-    border-bottom: 1px solid #eee;
-
-    position: sticky;
-    top: 100px;
-    z-index: 99;
+  position: sticky; top: 0; z-index: 15;
+  display: flex; justify-content: center; gap: clamp(18px, 4vw, 52px);
+  overflow-x: auto; padding: 8px var(--gutter); background: var(--ivory);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); scrollbar-width: thin;
 }
-
 .categorias-nav a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 0 8px;
+  min-height: 44px; flex: 0 0 auto; display: inline-flex; align-items: center;
+  color: var(--text-muted); font: 500 11px/1.2 var(--font-body);
+  letter-spacing: .08em; text-decoration: none; text-transform: uppercase;
 }
-
-.categorias-nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 0;
-    height: 1px;
-    background: #c9a96e;
-    transition: 0.3s;
+.categorias-nav a:hover, .categorias-nav a:focus-visible { color: var(--ink); }
+.section-title, #categorias-title {
+  max-width: var(--content); margin: var(--space-8) auto var(--space-5); padding: 0 var(--gutter);
 }
-
-.categorias-nav a:hover::after,
-.categorias-nav a:focus-visible::after {
-    width: 100%;
+#categorias { max-width: var(--content); margin: 0 auto; padding: 0 var(--gutter); }
+.categoria { margin: 0 0 var(--space-8); padding: 0; border: 0; }
+.categoria > h2, .categoria > h3 {
+  margin: 0 0 var(--space-5); padding: 0 0 16px;
+  border-bottom: 1px solid var(--line); text-align: left;
 }
-
-@media (max-width: 480px) {
-    .categorias-nav {
-        flex-wrap: wrap;
-        gap: 10px 16px;
-        padding: 12px 10px;
-    }
-
-    .categorias-nav a {
-        font-size: 15px;
-        min-height: 44px;
-    }
-}
-
-
-
-#categorias h3 {
-    font-size: 28px;
-    text-align: center;
-    /* Fase 4 (layout): mas aire arriba (separa secciones) y menos abajo (agrupa con su grilla) */
-    padding: 64px 20px 18px;
-
-
-}
-
-.productos-grid {
-    margin: 0 auto;
-    max-width: 1000px;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 35px;
-    /* Fase 4 (layout): filas alineadas (antes align-items:center descentraba las tarjetas) */
-    margin-bottom: 50px;
-}
-
-
-@media (max-width: 900px) {
-    .productos-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-@media (max-width: 500px) {
-    .productos-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-}
-
+.productos-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 36px); }
 .productos-card {
-    position: relative;
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    text-align: left;
-    transition: all 300ms;
-    /* Foto a sangre: el padding va al contenido de texto, no a la card. */
-    padding: 0;
-    border: 1px solid rgba(17, 17, 17, 0.08);
-    box-shadow: 0 6px 18px rgba(17, 17, 17, 0.08);
-
-    /* Fase 4 (layout): tarjeta en columna para alinear el CTA al pie de la fila */
-    display: flex;
-    flex-direction: column;
+  position: relative; min-width: 0; padding: 0 0 18px; overflow: hidden;
+  display: flex; flex-direction: column; align-items: stretch; color: var(--ink); background: transparent;
+  transition: transform 180ms ease;
 }
-
-.productos-card:hover {
-    transform: translateY(-8px);
-   box-shadow:0 10px 20px rgba(0, 0, 0, 0.15);
-
-
+.productos-card img { width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--sand); }
+.producto-info { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding: 14px 0 12px; }
+.producto-info p { margin: 0; color: var(--ink); font: 400 14px/1.4 var(--font-body); }
+.producto-info p:first-child { font-weight: 500; }
+.producto-info p:last-child { color: var(--text-muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+.productos-card > a { align-self: flex-start; width: auto; min-height: 44px; margin-top: auto; padding: 12px 14px; }
+.productos-card > a.gold { color: var(--ink); background: transparent; }
+.productos-card > a.gold:hover:not([aria-disabled="true"]) { color: var(--white); background: var(--ink); }
+.productos-card > a[aria-disabled="true"] {
+  color: var(--text-muted); background: var(--sand); border-color: var(--line);
+  cursor: not-allowed; pointer-events: none;
 }
-
-/* Fase 4 (layout): el bloque de datos absorbe el alto sobrante y el CTA queda al pie */
-.producto-info {
-    flex: 1 1 auto;
-    /* La foto va a sangre, así que el texto lleva su propio padding. */
-    padding: 14px 14px 0;
+.productos-card .badge, .productos-card .badge2 {
+  display: none;
+  position: absolute; z-index: 2; top: 10px; left: 10px; width: auto; min-height: 0;
+  margin: 0; padding: 7px 9px; color: var(--ink); background: var(--white);
+  font: 600 11px/1.2 var(--font-body); letter-spacing: .03em; text-transform: uppercase;
 }
-
-.producto-info p {
-    overflow-wrap: break-word;
-}
-
-.producto-info p:first-child{
-    font-size: 16px;
-}
-
-.producto-info p:last-child {
-    font-weight: bold;
-
-}
-
-.productos-card a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    padding: 12px 18px;
-    min-height: 48px;
-    min-width: 48px;
-    background: black;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: all 300ms;
-    /* Rediseño: con la tarjeta alineada a la izquierda, el CTA acompaña el texto */
-    align-self: flex-start;
-    /* La foto va a sangre, así que el CTA lleva su propio margen. */
-    margin-left: 14px;
-    margin-right: 14px;
-    margin-bottom: 14px;
-
-    background: transparent;
-    border: 1px solid #111;
-    color: #111;
-}
-
-@media (max-width: 500px) {
-    .productos-card a {
-        margin-top: 0px;
-        min-height: 48px;
-        margin-left: 10px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }
-}
-
-.productos-card a:hover,
-.productos-card a:focus-visible {
-    background: #111;
-    color: #fff;
-    outline: none;
-}
-
-
-
-.productos-card .gold:hover,
-.productos-card .gold:focus-visible {
-    background: #d6a956;
-    color: #111;
-}
-
-.sin-stock a{
-    background-color: gray;
-    pointer-events: none;
-    cursor: not-allowed;
-}
-
-
-.productos-card img {
-    height: auto;
-    width: 100%;
-    object-fit: cover;
-    object-position: center 20%;
-    display: block;
-    transition: transform 420ms ease;
-    flex: 0 0 auto;
-    aspect-ratio: 4 / 5;
-    /* Foto a sangre: pega a los bordes de la card. El radio lo aporta la
-       card con overflow:hidden, así se ve como una sola pieza. */
-    border-radius: 0;
-    margin-bottom: 0;
-}
-
-.productos-card:hover img {
-    transform: scale(1.03);
-}
-
-.badge,
-.badge2{
-    display: none;
-}
-
-.oferta .badge2{
-     display: block;
-    position: absolute;
-    top: 40px;
-    left: 10px;
-    background: green;
-    color:white;
-    padding: 5px 10px;
-    font-size: 14px;
-    border-radius: 5px;
-}
-
-.oferta .precio{
-    color: green;
-    font-weight: bold;
-}
-
-.oferta .precio-viejo{
-    text-decoration: line-through;
-    color: gray;
-    margin-right:5px ;
-}
-
-
-
-.sin-stock .badge{
-    display: block;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: crimson;
-    color:white;
-    padding: 5px 10px;
-    font-size: 14px;
-    border-radius: 5px;
-}
-
-.sin-stock{
-    opacity: 0.6;
-}
-
-.sin-stock img{
-    filter: grayscale(100%);
-}
-
-.categoria {
-    text-align: center;
-
-    /* Fase 3 (optimize): renderizar solo las secciones cercanas al viewport */
-    content-visibility: auto;
-    contain-intrinsic-size: auto 1213px;
-}
-
-.categoria:not([id]) {
-    contain-intrinsic-size: auto 770px;
-}
-
-.btn-ver-mas {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    padding: 8px 15px;
-    min-height: 44px;
-    min-width: 44px;
-    background-color: black;
-    border: 1px gold;
-    border-radius: 10px;
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    transition: all 300ms;
-}
-
-.btn-ver-mas:hover,
-.btn-ver-mas:focus-visible {
-    color: #b9995e;
-    outline: none;
-}
-
-
+.productos-card .badge2 { top: 44px; background: var(--sand); }
+.sin-stock .badge, .oferta .badge2 { display: block; }
+.oferta .precio { font-weight: 600; }
+.oferta .precio-viejo { margin-right: 6px; color: var(--text-muted); font-weight: 400; text-decoration: line-through; }
+.sin-stock { opacity: 1; filter: none; }
+.sin-stock img { filter: none; }
 #contacto {
-    width: 70%;
-    margin: 0 auto;
-    padding: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 50px;
-    margin-top: 20px;
+  margin: var(--space-8) auto 0; padding: clamp(56px, 8vw, 104px) var(--gutter);
+  color: var(--ink); background: var(--sand); text-align: center;
 }
-
-#contacto h2 {
-    font-size: 34px;
-    text-align: center;
-    padding: 10px;
+.contact-section { padding-block: clamp(56px, 8vw, 104px); }
+#contacto .contact-inner { max-width: 720px; margin: 0 auto; }
+#contacto h2 { margin: 0 0 var(--space-4); }
+#contacto p { max-width: 65ch; margin: 8px auto; color: var(--text-muted); }
+.botones-contacto { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
+.social-btn {
+  width: 48px; height: 48px; display: inline-grid; place-items: center;
+  color: var(--ink); background: transparent; border: 1px solid var(--taupe); text-decoration: none;
 }
-
-
-#contacto p {
-    text-align: center;
-    font-size: 20px;
-    color: #333;
-
-}
-
-.botones-contacto {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-}
-
-.social-btn i {
-    color: #333;
-    font-size: 30px;
-    padding: 10px;
-    border-radius: 100%;
-    transition: all 350ms;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    min-width: 44px;
-}
-
-.social-btn:hover i,
-.social-btn:focus-visible i {
-    color: white;
-    background-color: #c9a96e;
-
-
-}
-
-.botones {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-
-
-footer {
-    background: #111;
-    color: #fff;
-    padding: 40px 20px;
-    text-align: center;
-}
-
+.social-btn:hover { color: var(--white); background: var(--ink); }
+footer { padding: clamp(44px, 7vw, 84px) var(--gutter) 20px; color: var(--ivory); background: var(--ink); }
 #footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-
+  width: min(100%, var(--content)); margin: 0 auto; display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr 1.8fr; gap: 30px; align-items: start;
 }
-
-#footer-marca p {
-    font-size: 19px;
-    margin-top: -10px;
-}
-
-#footer-navbar ul {
-    display: flex;
-    list-style: none;
-    flex-direction: column;
-    gap: 5px;
-}
-
-#footer-navbar ul a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 21px;
-}
-
-#footer-navbar ul a:visited {
-    color: white;
-}
-
-#footer-navbar ul a:hover,
-#footer-navbar ul a:focus-visible {
-    color: #c9a96e;
-    text-decoration: underline;
-    outline: none;
-}
-
-.footer-info p {
-    text-align: left;
-}
-
-.botones-footer a {
-    color: white;
-    font-size: 20px;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    transition: 0.3s;
-    margin: 5px;
-    margin-bottom: 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 0 8px;
-}
-
-
+#footer-marca img { width: 76px; height: 76px; object-fit: contain; }
+#footer-marca p, .footer-info p { color: var(--ivory); font: 400 13px/1.65 var(--font-body); }
+.footer-info h3 { margin: 0 0 14px; color: var(--white); font: 600 11px/1.4 var(--font-body); letter-spacing: .1em; }
+.footer-info p { margin: 5px 0; }
+#footer-navbar a { color: var(--ivory); }
 .footer-bottom {
-    text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #444;
-    font-size: 14px;
-    color: #888;
+  width: min(100%, var(--content)); margin: 48px auto 0; padding-top: 16px;
+  display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(248,245,239,.28);
 }
-
-
-
-
-.botones-footer a:hover,
-.botones-footer a:focus-visible {
-    transform: scale(1.05);
-    opacity: 0.9;
-    color: #c9a96e;
-    outline: none;
+.footer-bottom p { margin: 0; color: var(--ivory); font: 400 11px/1.5 var(--font-body); }
+@media (hover: hover) and (pointer: fine) {
+  .productos-card:hover { transform: translateY(-2px); }
+  .productos-card:hover img { transform: scale(1.02); }
+  .productos-card img { transition: transform 220ms ease; }
 }
-
-
-@media (max-width: 700px) {
-    #footer-container {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 20px;
-    }
-
-    #footer-navbar ul {
-        gap: 10px;
-        padding: 0;
-    }
-
-
+@media (min-width: 768px) and (max-width: 1050px) {
+  .productos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #footer-container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-
-
-
-
-
-
-
-.autoShow{
-    animation: autoShowAnimation both;
-    animation-timeline: view(70% 5%);
+@media (max-width: 767px) {
+  :root { --gutter: 20px; --space-8: 72px; }
+  .site-header { min-height: 68px; padding: 8px var(--gutter); }
+  .brand-mark img { width: 48px; height: 48px; }
+  .menu-toggle {
+    width: 44px; height: 44px; display: inline-flex; flex-direction: column; justify-content: center;
+    gap: 5px; padding: 10px; color: var(--ink); background: transparent; border: 1px solid var(--line);
+  }
+  .menu-toggle span { width: 100%; height: 1px; display: block; background: currentColor; }
+  #navbar { position: relative; }
+  #menu-principal {
+    position: absolute; top: calc(100% + 12px); right: 0; z-index: 30;
+    width: min(280px, calc(100vw - 40px)); display: none; padding: 10px 18px;
+    background: var(--ivory); border: 1px solid var(--line);
+  }
+  #menu-principal.is-open { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  #menu-principal a { width: 100%; border-bottom: 1px solid var(--line); }
+  #menu-principal li:last-child a { border-bottom: 0; }
+  .categorias-nav { justify-content: flex-start; gap: 24px; padding-inline: var(--gutter); }
+  .productos-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .productos-card {
+    min-height: 124px; padding: 0 0 0 120px; display: grid;
+    grid-template-columns: minmax(0, 1fr); grid-template-rows: 1fr auto; align-content: center;
+  }
+  .productos-card img { position: absolute; inset: 0 auto 0 0; width: 104px; height: 100%; min-height: 124px; aspect-ratio: auto; object-fit: cover; }
+  .producto-info { padding: 12px 0 8px; }
+  .productos-card > a { justify-self: start; min-height: 44px; margin: 0 0 12px; padding: 10px 12px; }
+  .productos-card .badge { top: 7px; left: 7px; padding: 5px 6px; }
+  .productos-card .badge2 { top: 38px; left: 7px; padding: 5px 6px; }
+  #footer-container { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; }
+  #footer-navbar ul { align-items: flex-start; flex-direction: column; gap: 0; }
+  .footer-bottom { margin-top: 32px; flex-direction: column; gap: 8px; }
 }
-
-@keyframes autoShowAnimation{
-    from{
-        opacity: 0;
-        transform: translateY(200px) scale(0.3);
-    }
-    to{
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+@media (max-width: 380px) {
+  :root { --gutter: 16px; }
+  .productos-card { padding-left: 102px; }
+  .productos-card img { width: 88px; }
+  .producto-info p { font-size: 13px; }
+  .productos-card > a { max-width: 100%; white-space: nowrap; }
 }
-
-/* ------------------------------------------------------------------ *
- * Animaciones JS (animaciones.js)
- *
- * Cuando JS está activo, html recibe .js-anim y el JS se encarga de las
- * apariciones. Aquí neutralizamos la animación CSS previa (animation-timeline
- * no funciona en Safari ni Firefox) para que no compitan las dos.
- * Si JS no carga, nada de esto aplica y el sitio sigue viéndose como antes.
- * ------------------------------------------------------------------ */
-
-.js-anim .autoShow {
-    animation: none;
-}
-
-/* Estado inicial: invisible y ligeramente desplazado.
-   Se aplica solo si JS confirmó que va a animar (clase .js-anim en html). */
-.js-anim .anim-prep {
-    opacity: 0;
-    transform: translateY(18px);
-    transition:
-        opacity 620ms cubic-bezier(0.22, 0.61, 0.36, 1),
-        transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1);
-    will-change: opacity, transform;
-}
-
-.js-anim .anim-prep.anim-visible {
-    opacity: 1;
-    transform: none;
-    will-change: auto;
-}
-
-/* Header compacto: aparece solo cuando JS lo pide tras scrollear. */
-header.header-compacto {
-    box-shadow: 0 4px 14px rgba(17, 17, 17, 0.08);
-    transition: box-shadow 300ms ease;
-}
-
-/* Con "menos movimiento" activado, jamás ocultamos contenido. */
 @media (prefers-reduced-motion: reduce) {
-    .js-anim .anim-prep {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-
-    .js-anim .autoShow {
-        animation: none;
-    }
-
-    /* El slider sigue funcionando, pero sin fundido: cambio instantáneo. */
-    .slide {
-        transition: none;
-    }
-
-    /* El fadeUp del hero-text tampoco debe correr con menos movimiento. */
-    .hero-text {
-        animation: none;
-    }
-
-    .slider-flecha,
-    .slider-punto::after {
-        transition: none;
-    }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
-/* Fase 2 (adapt): areas tactiles >=44px sin cambio visual */
-.categorias-nav a::before {
-    content: "";
-    position: absolute;
-    top: -14px;
-    right: 0;
-    bottom: -14px;
-    left: 0;
+/* Home: fotografía de colección y contenido editorial estático */
+.editorial-hero {
+  width: min(calc(100% - 2 * var(--gutter)), 1360px); min-height: 520px; max-height: 680px;
+  margin: 32px auto 0; display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; overflow: hidden;
 }
-
-.menu-toggle {
-    position: relative;
-}
-
-.menu-toggle::after {
-    content: "";
-    position: absolute;
-    top: -12px;
-    right: -8px;
-    bottom: -12px;
-    left: -8px;
-}
-
-.btn {
-    position: relative;
-}
-
-.btn::after {
-    content: "";
-    position: absolute;
-    top: -6px;
-    right: -8px;
-    bottom: -6px;
-    left: -8px;
-}
-
-.productos-card a {
-    position: relative;
-}
-
-.productos-card a::after {
-    content: "";
-    position: absolute;
-    top: -6px;
-    right: -8px;
-    bottom: -6px;
-    left: -8px;
-}
-
-.btn-ver-mas {
-    position: relative;
-}
-
-.btn-ver-mas::after {
-    content: "";
-    position: absolute;
-    top: -6px;
-    right: -8px;
-    bottom: -6px;
-    left: -8px;
+.hero-copy { position: relative; z-index: 1; padding: clamp(30px, 6vw, 88px) clamp(8px, 4vw, 64px) clamp(30px, 6vw, 88px) clamp(12px, 5vw, 72px); }
+.hero-copy h1 { max-width: 8ch; margin: 0 0 22px; font-size: clamp(52px, 7.2vw, 94px); }
+.hero-copy p { max-width: 34ch; margin: 0 0 30px; color: var(--text-muted); font-size: clamp(16px, 1.4vw, 18px); }
+.hero-copy .btn { min-width: 164px; }
+.hero-image { min-width: 0; height: 100%; min-height: 520px; max-height: 680px; overflow: hidden; }
+.hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+#categorias-title { margin-top: clamp(64px, 9vw, 112px); }
+@media (max-width: 767px) {
+  .editorial-hero { width: 100%; min-height: 0; max-height: none; margin-top: 0; grid-template-columns: 1fr; }
+  .hero-copy { padding: 54px var(--gutter) 34px; }
+  .hero-copy h1 { max-width: 9ch; margin-bottom: 16px; font-size: clamp(50px, 13vw, 68px); }
+  .hero-copy p { margin-bottom: 22px; }
+  .hero-image { min-height: 0; height: min(104vw, 480px); max-height: none; }
+  #categorias-title { margin-top: 64px; }
 }
